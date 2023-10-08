@@ -10,9 +10,17 @@ class BloodController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+
     public function index()
     {
-        //
+        $bloods = Blood::all();
+        return view('back_end.masters.bloods.index',compact('bloods'))->with('i');
     }
 
     /**
@@ -21,6 +29,8 @@ class BloodController extends Controller
     public function create()
     {
         //
+        $bloods = Blood::all();
+        return view('back_end.masters.bloods.create',compact('bloods'))->with('i');
     }
 
     /**

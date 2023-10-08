@@ -10,9 +10,17 @@ class AppSettingsController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+
     public function index()
     {
-        //
+        $appSettingss = AppSettings::all();
+        return view('folder.AppSettingss.folder',compact('AppSettingss'))->with('i');
     }
 
     /**

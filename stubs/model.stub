@@ -11,6 +11,11 @@ class {{ class }} extends Model
 {
     use HasFactory;
 
+     protected $fillable = [
+        'name',
+        'status'
+    ];
+
     public function getCreatedAtAttribute()
     {
         $time_zone = Auth::user()->timeZone->time_zone;
