@@ -4,7 +4,7 @@
     {{-- <img src="{{ asset('adminLinks/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
         class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
     <x-app.application-logo-mini width="27" />
-    <x-app.application-logo width="127" />
+    {{-- <x-app.application-logo width="127" /> --}}
     <span class="brand-text font-weight-light">{{ $Application->data['app_name'] }}</span>
 </a>
 
@@ -29,7 +29,7 @@
 
         </div>
         <div class="info">
-            <a href="/admin/home" class="d-block">{{ Auth::user()->name }}</a>
+            <a href="/admin/dashboard" class="d-block">{{ Auth::user()->name }}</a>
         </div>
     </div>
 
@@ -52,10 +52,10 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="/admin/home" class="nav-link {{ request()->is('admin/home') ? 'active' : '' }}">
+                <a href="/admin/dashboard" class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                        Home
+                        Dashboard
                     </p>
                 </a>
             </li>

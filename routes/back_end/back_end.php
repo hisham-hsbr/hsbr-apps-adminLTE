@@ -1,7 +1,7 @@
 <?php
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/admin/dashboard', function () {
+    return view('back_end/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
