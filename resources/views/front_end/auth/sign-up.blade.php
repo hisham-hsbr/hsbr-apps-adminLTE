@@ -15,20 +15,20 @@
     <!--    Favicons-->
     <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180"
-        href="{{ asset('back-end-links/phoenix/public/assets/img/favicons/apple-touch-icon.png') }}">
+        href="{{ asset('front_end_links/phoenix/public/assets/img/favicons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ asset('back-end-links/phoenix/public/assets/img/favicons/favicon-32x32.png') }}">
+        href="{{ asset('front_end_links/phoenix/public/assets/img/favicons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('back-end-links/phoenix/public/assets/img/favicons/favicon-16x16.png') }}">
+        href="{{ asset('front_end_links/phoenix/public/assets/img/favicons/favicon-16x16.png') }}">
     <link rel="shortcut icon" type="image/x-icon"
-        href="{{ asset('back-end-links/phoenix/public/assets/img/favicons/favicon.ico') }}">
-    <link rel="manifest" href="{{ asset('back-end-links/phoenix/public/assets/img/favicons/manifest.json') }}">
+        href="{{ asset('front_end_links/phoenix/public/assets/img/favicons/favicon.ico') }}">
+    <link rel="manifest" href="{{ asset('front_end_links/phoenix/public/assets/img/favicons/manifest.json') }}">
     <meta name="msapplication-TileImage"
-        content="{{ asset('back-end-links/phoenix/public/assets/img/favicons/mstile-150x150.png') }}">
+        content="{{ asset('front_end_links/phoenix/public/assets/img/favicons/mstile-150x150.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/assets/js/config.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/assets/js/config.js') }}"></script>
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
@@ -37,15 +37,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap"
         rel="stylesheet">
-    <link href="{{ asset('back-end-links/phoenix/public/vendors/simplebar/simplebar.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('front_end_links/phoenix/public/vendors/simplebar/simplebar.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css') }}">
-    <link href="{{ asset('back-end-links/phoenix/public/assets/css/theme-rtl.min.css') }}" type="text/css"
+    <link href="{{ asset('front_end_links/phoenix/public/assets/css/theme-rtl.min.css') }}" type="text/css"
         rel="stylesheet" id="style-rtl">
-    <link href="{{ asset('back-end-links/phoenix/public/assets/css/theme.min.css') }}" type="text/css" rel="stylesheet"
-        id="style-default">
-    <link href="{{ asset('back-end-links/phoenix/public/assets/css/user-rtl.min.css') }}" type="text/css"
+    <link href="{{ asset('front_end_links/phoenix/public/assets/css/theme.min.css') }}" type="text/css"
+        rel="stylesheet" id="style-default">
+    <link href="{{ asset('front_end_links/phoenix/public/assets/css/user-rtl.min.css') }}" type="text/css"
         rel="stylesheet" id="user-style-rtl">
-    <link href="{{ asset('back-end-links/phoenix/public/assets/css/user.min.css') }}" type="text/css" rel="stylesheet"
+    <link href="{{ asset('front_end_links/phoenix/public/assets/css/user.min.css') }}" type="text/css" rel="stylesheet"
         id="user-style-default">
     <script>
         var phoenixIsRTL = window.config.config.phoenixIsRTL;
@@ -74,7 +74,7 @@
             <div class="row flex-center min-vh-100 py-5">
                 <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a
                         class="d-flex flex-center text-decoration-none mb-4"
-                        href="{{ asset('back-end-links/phoenix/public/index.html') }}">
+                        href="{{ asset('front_end_links/phoenix/public/index.html') }}">
                         <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block">
                             <x-app.application-logo-mini width="150" />
                         </div>
@@ -189,7 +189,7 @@
                             <div class="text-center mt-auto">
                                 <div class="avatar avatar-3xl status-online"><img
                                         class="rounded-circle border border-3 border-white"
-                                        src="{{ asset('back-end-links/phoenix/public/assets/img/team/30.webp') }}"
+                                        src="{{ asset('front_end_links/phoenix/public/assets/img/team/30.webp') }}"
                                         alt="" /></div>
                                 <h5 class="mt-2 mb-3">Eric</h5>
                                 <p class="text-center text-black mb-0">Ask us anything – we’ll get back to you here or
@@ -246,7 +246,7 @@
                             value="light" data-theme-control="phoenixTheme" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherLight"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-light.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-light.png') }}"
                                     alt="" /></span><span class="label-text">Light</span></label>
                     </div>
                     <div class="col-6">
@@ -254,7 +254,7 @@
                             value="dark" data-theme-control="phoenixTheme" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherDark"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-dark.png') }}"
                                     alt="" /></span><span class="label-text"> Dark</span></label>
                     </div>
                 </div>
@@ -284,45 +284,45 @@
                     <div class="col-6">
                         <input class="btn-check" id="navbarPositionVertical" name="navigation-type" type="radio"
                             value="vertical" data-theme-control="phoenixNavbarPosition"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/vertical-navbar.html') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/vertical-navbar.html') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarPositionVertical"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-light.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-light.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-dark.png') }}"
                                     alt="" /></span><span class="label-text">Vertical</span></label>
                     </div>
                     <div class="col-6">
                         <input class="btn-check" id="navbarPositionHorizontal" name="navigation-type" type="radio"
                             value="horizontal" data-theme-control="phoenixNavbarPosition"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/horizontal-navbar.html') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/horizontal-navbar.html') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarPositionHorizontal"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-default.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-default.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-default-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-default-dark.png') }}"
                                     alt="" /></span><span class="label-text"> Horizontal</span></label>
                     </div>
                     <div class="col-6">
                         <input class="btn-check" id="navbarPositionCombo" name="navigation-type" type="radio"
                             value="combo" data-theme-control="phoenixNavbarPosition"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/combo-navbar.html') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/combo-navbar.html') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarPositionCombo"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/nav-combo-light.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/nav-combo-light.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/nav-combo-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/nav-combo-dark.png') }}"
                                     alt="" /></span><span class="label-text"> Combo</span></label>
                     </div>
                     <div class="col-6">
                         <input class="btn-check" id="navbarPositionTopDouble" name="navigation-type" type="radio"
                             value="dual-nav" data-theme-control="phoenixNavbarPosition"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/dual-nav.html') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/dual-nav.html') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarPositionTopDouble"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/dual-light.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/dual-light.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/dual-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/dual-dark.png') }}"
                                     alt="" /></span><span class="label-text"> Dual nav</span></label>
                     </div>
                 </div>
@@ -335,9 +335,9 @@
                             value="default" data-theme-control="phoenixNavbarVerticalStyle" />
                         <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-default"> <img
                                 class="img-fluid img-prototype d-dark-none"
-                                src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-light.png') }}"
+                                src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-light.png') }}"
                                 alt="" /><img class="img-fluid img-prototype d-light-none"
-                                src="{{ asset('back-end-links/phoenix/public/assets/img/generic/default-dark.png') }}"
+                                src="{{ asset('front_end_links/phoenix/public/assets/img/generic/default-dark.png') }}"
                                 alt="" /><span class="label-text d-dark-none"> Default</span><span
                                 class="label-text d-light-none">Default</span></label>
                     </div>
@@ -346,9 +346,9 @@
                             value="darker" data-theme-control="phoenixNavbarVerticalStyle" />
                         <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-dark"> <img
                                 class="img-fluid img-prototype d-dark-none"
-                                src="{{ asset('back-end-links/phoenix/public/assets/img/generic/vertical-darker.png') }}"
+                                src="{{ asset('front_end_links/phoenix/public/assets/img/generic/vertical-darker.png') }}"
                                 alt="" /><img class="img-fluid img-prototype d-light-none"
-                                src="{{ asset('back-end-links/phoenix/public/assets/img/generic/vertical-lighter.png') }}"
+                                src="{{ asset('front_end_links/phoenix/public/assets/img/generic/vertical-lighter.png') }}"
                                 alt="" /><span class="label-text d-dark-none"> Darker</span><span
                                 class="label-text d-light-none">Lighter</span></label>
                     </div>
@@ -360,23 +360,23 @@
                     <div class="col-6">
                         <input class="btn-check" id="navbarShapeDefault" name="navbar-shape" type="radio"
                             value="default" data-theme-control="phoenixNavbarTopShape"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/horizontal-navbar.html') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/horizontal-navbar.html') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarShapeDefault"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-default.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-default.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-default-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-default-dark.png') }}"
                                     alt="" /></span><span class="label-text">Default</span></label>
                     </div>
                     <div class="col-6">
                         <input class="btn-check" id="navbarShapeSlim" name="navbar-shape" type="radio"
                             value="slim" data-theme-control="phoenixNavbarTopShape"
-                            data-page-url="{{ asset('back-end-links/phoenix/public/documentation/layouts/horizontal-navbar.html#horizontal-navbar-slim') }}" />
+                            data-page-url="{{ asset('front_end_links/phoenix/public/documentation/layouts/horizontal-navbar.html#horizontal-navbar-slim') }}" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarShapeSlim"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-slim.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-slim.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-slim-dark.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-slim-dark.png') }}"
                                     alt="" /></span><span class="label-text"> Slim</span></label>
                     </div>
                 </div>
@@ -389,9 +389,9 @@
                             value="default" data-theme-control="phoenixNavbarTopStyle" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarTopDefault"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-default.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-default.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-style-darker.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-style-darker.png') }}"
                                     alt="" /></span><span class="label-text">Default</span></label>
                     </div>
                     <div class="col-6">
@@ -399,9 +399,9 @@
                             value="darker" data-theme-control="phoenixNavbarTopStyle" />
                         <label class="btn d-inline-block btn-navbar-style fs--1" for="navbarTopDarker"> <span
                                 class="mb-2 rounded d-block"><img class="img-fluid img-prototype d-dark-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/navbar-top-style-light.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/navbar-top-style-light.png') }}"
                                     alt="" /><img class="img-fluid img-prototype d-light-none mb-0"
-                                    src="{{ asset('back-end-links/phoenix/public/assets/img/generic/top-style-lighter.png') }}"
+                                    src="{{ asset('front_end_links/phoenix/public/assets/img/generic/top-style-lighter.png') }}"
                                     alt="" /></span><span class="label-text d-dark-none">Darker</span><span
                                 class="label-text d-light-none">Lighter</span></label>
                     </div>
@@ -429,17 +429,17 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/popper/popper.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/bootstrap/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/anchorjs/anchor.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/is/is.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/fontawesome/all.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/lodash/lodash.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/anchorjs/anchor.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/is/is.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/fontawesome/all.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/lodash/lodash.min.js') }}"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/list.js/list.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/vendors/dayjs/dayjs.min.js') }}"></script>
-    <script src="{{ asset('back-end-links/phoenix/public/assets/js/phoenix.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/list.js/list.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/vendors/dayjs/dayjs.min.js') }}"></script>
+    <script src="{{ asset('front_end_links/phoenix/public/assets/js/phoenix.js') }}"></script>
 
 </body>
 
