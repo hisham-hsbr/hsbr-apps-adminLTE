@@ -13,6 +13,10 @@ use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\RefreshesPermissionCache;
 
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+
 /**
  * @property int $id
  * @property string $name
@@ -193,5 +197,30 @@ class Role extends Model implements RoleContract
         }
 
         return $this->permissions->contains($permission->getKeyName(), $permission->getKey());
+    }
+
+    // ------
+
+
+    public function getCreatedAtAttribute()
+    {
+        $time_zone = Auth::user()->timeZone->time_zone;
+        return Carbon::parse($this->attributes['created_at'])->setTimezone($time_zone);
+    }
+
+    public function getUpdatedAtAttribute()
+    {
+        $time_zone = Auth::user()->timeZone->time_zone;
+        return Carbon::parse($this->attributes['updated_at'])->setTimezone($time_zone);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class,'created_by','id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class,'updated_by','id');
     }
 }

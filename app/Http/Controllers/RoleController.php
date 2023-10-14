@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -38,7 +40,30 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:roles,name',
+            'permission' => 'required',
+        ]);
+
+
+            $role = new Role();
+            $role->name = $request->name;
+
+        if ($request->status==0)
+        {
+            $role->status==0;
+        }
+
+        $role->status = $request->status;
+
+        $role->created_by = Auth::user()->id;
+        $role->updated_by = Auth::user()->id;
+
+        $role->save();
+
+        $role->syncPermissions($request->input('permission'));
+
+        return redirect()->route('roles.index')->with('message_store', "{$request->name} -  Role Created Successfully");
     }
 
     /**

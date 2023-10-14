@@ -1,11 +1,11 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'Role Create')
+@section('PageHead', 'User Create')
 
-@section('PageTitle', 'Role Create')
+@section('PageTitle', 'User Create')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/admin/roles">Roles</a></li>
+    <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 
@@ -15,7 +15,7 @@
         href="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
 @endsection
 
-@section('actionTitle', 'Role Create')
+@section('actionTitle', 'User Create')
 @section('mainContent')
     <div class="container-fluid">
         <div class="row">
@@ -24,7 +24,7 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                <form role="form" action="{{ route('roles.store') }}" method="post" enctype="multipart/form-data"
+                <form role="form" action="{{ route('users.store') }}" method="post" enctype="multipart/form-data"
                     id="quickForm">
                     {{ csrf_field() }}
                     <div class="card-body">
@@ -33,13 +33,59 @@
                             <label class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">
                                 <input type="text" name="name" value="{{ old('name') }}" class="form-control"
-                                    id="name" placeholder="Enter Role Name">
+                                    id="name" placeholder="Enter User Name">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label>Assign Permissions</label>
+                                    <label>Assign Roles</label>
+                                    <select name="roles[]" class="duallistbox" multiple="multiple">
+                                        @foreach ($roles as $role)
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Loging Details</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label for="inputEmail3" class="required col-form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}"
+                                        placeholder="Email">
+                                </div>
+
+
+                                <div class="col-sm-4">
+                                    <label for="inputPassword3" class="required col-form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <label for="inputPassword3" class="required col-form-label">Confirm
+                                        Password</label>
+                                    <input type="password" name="confirm-password" class="form-control"
+                                        placeholder="Confirm Password">
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- /.card-header -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Assign Special Permissions</label>
                                     <select name="permission[]" class="duallistbox" multiple="multiple">
                                         @foreach ($permissions as $key => $value)
                                             @foreach ($value as $permission)
@@ -61,9 +107,9 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="">
-                        {{-- @can('Create User') --}}
-                        <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
-                        {{-- @endcan --}}
+                        @can('User Menud')
+                            <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
+                        @endcan
                         <a type="button" href="{{ route('roles.index') }}"
                             class="btn btn-warning float-right ml-1">Back</a>
                     </div>

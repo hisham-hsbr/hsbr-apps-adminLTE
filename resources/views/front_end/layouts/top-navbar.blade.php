@@ -63,7 +63,7 @@
                 @if (Route::has('login'))
                     @auth
                         <a class="btn btn-link text-900 order-1 order-lg-0 ps-4 me-lg-2"
-                            href="{{ route('backend-dash') }}">Dashboard</a>
+                            href="{{ route('back-end.dashboard') }}">Dashboard</a>
                     @else
                         <a class="btn btn-link text-900 order-1 order-lg-0 ps-4 me-lg-2" href="{{ route('login') }}">Sign
                             in</a>

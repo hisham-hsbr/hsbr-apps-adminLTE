@@ -15,7 +15,7 @@
 
 @section('actionTitle', 'Dashboard Index')
 @section('mainContent')
-    <h1>Roles index</h1>
+    <h1>Users index</h1>
 
 @endsection
 @section('actionFooter', 'Footer')

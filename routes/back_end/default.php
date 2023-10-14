@@ -15,7 +15,12 @@ Route::middleware('auth')->group(function () {
     //Roles
     Route::get('/admin/roles', 'RoleController@index')->name('roles.index');
     Route::get('/admin/roles/create', 'RoleController@create')->name('roles.create');
-    Route::patch('/admin/roles/store', 'RoleController@create')->name('roles.store');
+    Route::post('/admin/roles/store', 'RoleController@store')->name('roles.store');
+
+    //Users
+    Route::get('/admin/users', 'UserController@index')->name('users.index');
+    Route::get('/admin/users/create', 'UserController@create')->name('users.create');
+    Route::post('/admin/users/store', 'UserController@store')->name('users.store');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
