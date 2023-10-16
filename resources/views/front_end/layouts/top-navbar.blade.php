@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center">
                 <x-app.application-logo-mini width="27" />
 
-                <x-app.application-logo width="127" />
+                <x-app.application-logo-blue width="127" />
 
             </div>
         </a>

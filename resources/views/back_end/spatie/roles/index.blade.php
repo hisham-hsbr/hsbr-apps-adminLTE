@@ -21,23 +21,5 @@
 @section('actionFooter', 'Footer')
 @section('footerLinks')
 
-    @if (Session::has('message_store'))
-        <script>
-            toastr.success("{!! Session::get('message_store') !!}");
-        </script>
-    @endif
-
-    @if (Session::has('message_update'))
-        <script>
-            toastr.success("{!! Session::get('message_update') !!}");
-        </script>
-    @endif
-
-    @if ($errors->count() > 0)
-        @foreach ($errors->all() as $error)
-            <script>
-                toastr.error("{{ $error }}");
-            </script>
-        @endforeach
-    @endif
+    <x-message.message />
 @endsection
