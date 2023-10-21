@@ -22,6 +22,10 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <x-layouts.div-clearfix>
+                                <x-form.a-button button_class="btn btn-primary" href="{{ route('roles.create') }}"
+                                    button_icon="fa fa-add" button_name="Add" />
+                            </x-layouts.div-clearfix>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

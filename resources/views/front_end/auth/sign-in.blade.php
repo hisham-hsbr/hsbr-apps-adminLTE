@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                             <div class="col-auto"><a class="fs--1 fw-semi-bold"
-                                    href="{{ asset('front_end_links/phoenix/public/pages/authentication/simple/forgot-password.html') }}">Forgot
+                                    href="{{ route('password.request') }}">Forgot
                                     Password?</a></div>
                         </div>
                         <button class="btn btn-primary w-100 mb-3">Sign In</button>
