@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('state');
             $table->string('district');
             $table->string('city');
-            $table->unsignedMediumInteger('zipcode')->length(5);
+            $table->unsignedMediumInteger('zip_code')->length(5);
 
             $table->boolean('status')->nullable();
 

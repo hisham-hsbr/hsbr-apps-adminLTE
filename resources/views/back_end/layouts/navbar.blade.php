@@ -138,6 +138,11 @@
                     <p>
                         {{ Auth::user()->name }} {{ Auth::user()->last_name }}
                         <small>{{ Auth::user()->email }}</small>
+                        <small>
+                            Time-Zone :
+                            {{ Auth::user()->timeZone->time_zone }}
+                            ({{ Auth::user()->timeZone->utc_code }})
+                        </small>
                     </p>
                 </li>
                 <!-- Menu Body -->

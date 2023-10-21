@@ -52,14 +52,19 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3 id="userc">{{ $users->count() }}</h3>
 
+                        <a class="btn btn-secondary float-right ml-1">
+                            <i type="button" onClick="Refresh()" class="fa fa-refresh" aria-hidden="true"></i>
+                            Refresh
+                        </a>
                         <p>User Registrations</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('users.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -629,4 +634,45 @@
             </script>
         @endforeach
     @endif
+
+    <script>
+        $(document).ready(function() {
+            // userCount();
+
+            function userCount() {
+                $.ajax({
+                    Headers: {
+                        "X-CSRF-TOKEN": $("input[name='_token']").attr('content')
+                    },
+                    type: "GET",
+                    url: "/admin/dashboard/users",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.users);
+                        alert('hai');
+                        // document.getElementById('userc').innerHTML = response.users;
+                    }
+                })
+            }
+        })
+    </script>
+    <script>
+        function Refresh() {
+            alert('hai');
+        }
+    </script>
+    {{-- <h1 id='league_name'></h1> --}}
+    {{-- <script>
+        fetch('https://jsonplaceholder.typicode.com/users/2')
+            .then(response => {
+                return response.json();
+            })
+            .then(user => {
+                console.log(user)
+                document.getElementById('league_name').innerHTML = user.name;
+            }).catch(e => console.log(e))
+    </script> --}}
+
+
+
 @endsection

@@ -37,8 +37,8 @@
         <ul class="nav nav-pills nav-sidebar nav-compact nav-child-indent flex-column" data-widget="treeview"
             role="menu" data-accordion="false">
             {{-- Dashboard --}}
-            <x-sidebar.sidebar-nav-level head="Dashboard" href="{{ route('users.index') }}" menu_open=""
-                active="{{ request()->is('admin/dashboard') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
+            <x-sidebar.sidebar-nav-level head="Dashboard" href="{{ route('back-end.dashboard') }}" menu_open=""
+                active="{{ request()->is('admin/dashboard') ? 'active' : '' }}" menu_icon="fas fa-tachometer-alt"
                 drop_icon="" />
 
             <x-sidebar.sidebar-nav-header head="Admin Section" />
@@ -64,13 +64,13 @@
                 menu_open="{{ request()->is('admin/users-management*') ? 'menu-open' : '' }}"
                 active="{{ request()->is('admin/users-management/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
                 drop_icon="fas fa-angle-left">
-                {{-- Menu User --}}
+                {{-- Menu Roles --}}
                 <x-sidebar.sidebar-nav-multi-level head="Roles" href="{{ route('roles.index') }}" menu_open=""
                     active="{{ request()->is('admin/users-management/roles*') ? 'active' : '' }}"
                     menu_icon="fa fa-user-secret" drop_icon="" />
-                {{-- Menu Blood --}}
-                <x-sidebar.sidebar-nav-multi-level head="Permission" href="{{ route('bloods.index') }}" menu_open=""
-                    active="{{ request()->is('admin/users-management/bloods*') ? 'active' : '' }}"
+                {{-- Menu Permission --}}
+                <x-sidebar.sidebar-nav-multi-level head="Permission" href="{{ route('permissions.index') }}"
+                    menu_open="" active="{{ request()->is('admin/users-management/permissions*') ? 'active' : '' }}"
                     menu_icon="fa fa-lock" drop_icon="" />
             </x-sidebar.sidebar-nav-level>
         </ul>

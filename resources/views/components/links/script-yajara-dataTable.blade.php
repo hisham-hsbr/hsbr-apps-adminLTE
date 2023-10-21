@@ -6,6 +6,7 @@
             "autoWidth": true,
             // dom: 'Bfrtip',
             dom: '<"html5buttons"B>lTftigp',
+
             // "buttons": ["excel", "pdf", "print", "colvis"],
             buttons: [
                 'copy',
@@ -68,4 +69,10 @@
         //     "responsive": true,
         // });
     });
+</script>
+<script>
+    function Refresh() {
+        $('#example1').DataTable().ajax.reload();
+        alert('refreshed');
+    }
 </script>

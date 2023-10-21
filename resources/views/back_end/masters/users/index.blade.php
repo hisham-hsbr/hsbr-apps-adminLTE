@@ -92,8 +92,6 @@
         data: 'email',
         name: 'email',
         defaultContent: '',
-        orderable: false,
-        searchable: false
         },
         {
         data: 'created_at',

@@ -107,9 +107,9 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="">
-                        @can('User Menud')
-                            <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
-                        @endcan
+                        {{-- @can('User Menu') --}}
+                        <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
+                        {{-- @endcan --}}
                         <a type="button" href="{{ route('roles.index') }}"
                             class="btn btn-warning float-right ml-1">Back</a>
                     </div>

@@ -25,40 +25,74 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Sn</th>
+                                        <th>Name</th>
+                                        <th>Users</th>
+                                        <th>Permissions</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
+                                        <th>Created By</th>
+                                        <th>Updated By</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td>5</td>
-                                        <td>C</td>
-                                    </tr>
+                                    @foreach ($roles as $key => $role)
+                                        <tr>
+                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $role->name }}</td>
+                                            <td><span class="badge badge-primary badge-pill">{{ $role->users->count() }}
+                                                    Users</span></td>
+                                            <td> <span
+                                                    class="badge badge-warning badge-pill">{{ $role->permissions->count() }}
+                                                    Permissions</span></td>
+                                            <td>
+                                                @if ($role->status == '1')
+                                                    <span
+                                                        style="background-color: #04AA6D;color: white;padding: 3px;width:100px;">Active</span>
+                                                @else
+                                                    <span
+                                                        style="background-color: #ff9800;color: white;padding: 3px;width:100px;">In
+                                                        Active</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ $role->createdBy->name }}</td>
+                                            <td>{{ $role->updatedBy->name }}</td>
+                                            <td>{{ $role->created_at->format('d-M-Y , h:i:s A') }}</td>
+                                            <td>{{ $role->updated_at->format('d-M-Y , h:i:s A') }}</td>
+                                            <td>
+                                                <a href="{{ route('roles.edit', $role->id) }}" class="ml-2">
+                                                    <i class="fa-solid fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form method="POST" action="{{ route('roles.destroy', $role->id) }}"
+                                                    onsubmit="return confirm('Are you sure?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn" type="submit"><i
+                                                            class="fa-solid fa-trash-can text-danger"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Sn</th>
+                                        <th>Name</th>
+                                        <th>Users</th>
+                                        <th>Permissions</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
+                                        <th>Created By</th>
+                                        <th>Updated By</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </tfoot>
                             </table>

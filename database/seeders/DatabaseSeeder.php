@@ -21,9 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call(DeveloperUserSeeder::class);
         $this->call(PermissionSeeder::class);
         $this->call(DeveloperSettingsSeeder::class);
+        $this->call(AppSettingsSeeder::class);
         $this->call(AdminUserSeeder::class);
-        // $this->call(TimeZoneSeeder::class);
+        $this->call(TimeZoneSeeder::class);
         $this->call(BloodSeeder::class);
-        // $this->call(CountryStateDistrictCitySeeder::class);
+        $this->call(CountryStateDistrictCitySeeder::class);
     }
 }

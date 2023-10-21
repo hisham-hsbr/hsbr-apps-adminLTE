@@ -4,21 +4,17 @@
         <div class="row">
             <div class="col-12">
                 <!-- Default box -->
-                <div class="card card-primary">
+                @if ($DefaultLayout->data['card_header'] == 1)
+                    <div class="card card-primary">
+                @endif
+
+
+                @if ($DefaultLayout->data['card_header'] == 1)
                     <div class="card-header">
                         <h3 class="card-title">@yield('actionTitle')</h3>
 
 
                         <div class="card-tools">
-
-                            {{-- <button type="button" class="btn btn-primary">Primary</button>
-                            <button type="button" class="btn btn-secondary">Secondary</button>
-                            <button type="button" class="btn btn-success">Success</button>
-                            <button type="button" class="btn btn-danger">Danger</button>
-                            <button type="button" class="btn btn-warning">Warning</button>
-                            <button type="button" class="btn btn-info">Info</button>
-                            <button type="button" class="btn btn-light">Light</button>
-                            <button type="button" class="btn btn-dark">Dark</button> --}}
 
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -28,18 +24,24 @@
                             </button>
                         </div>
                     </div>
-                    <div class="card-body">
-                        @section('mainContent')
-                        @show
-                    </div>
-                    <!-- /.card-body -->
+                @endif
+                {{-- -------- --}}
+                <div class="card-body">
+                    @section('mainContent')
+                    @show
+                </div>
+                <!-- /.card-body -->
+                @if ($DefaultLayout->data['card_footer'] == 1)
                     <div class="card-footer">
                         @yield('actionFooter')
                     </div>
-                    <!-- /.card-footer-->
-                </div>
-                <!-- /.card -->
+                @endif
+                <!-- /.card-footer-->
+                @if ($DefaultLayout->data['card_header'] == 1)
             </div>
+            @endif
+            <!-- /.card -->
         </div>
+    </div>
     </div>
 </section>
