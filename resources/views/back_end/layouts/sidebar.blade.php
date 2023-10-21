@@ -1,9 +1,12 @@
 <!-- Brand Logo -->
 <a href="/" class="brand-link">
     <x-app.application-logo-mini width="27" />
-    <x-app.application-logo-gray width="72" />
+    <x-app.application-logo-gray width="102" />
     {{-- <span class="brand-text font-weight-light">{{ $Application->data['app_name'] }}</span> --}}
 </a>
+<div style="padding:12px">
+
+</div>
 
 <!-- Sidebar -->
 <div class="sidebar">

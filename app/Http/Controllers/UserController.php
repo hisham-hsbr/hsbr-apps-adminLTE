@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
@@ -24,6 +25,20 @@ class UserController extends Controller
         $users = User::all();
         return view('back_end.masters.users.index',compact('users'))->with('i');
     }
+    public function getUsers()
+    {
+        return Datatables::of(User::query())
+        ->addColumn('created_at', function (User $User) {
+            return $User->created_at->format('d-M-Y h:m');
+        })
+        ->addColumn('updated_at', function (User $User) {
+
+            return $User->updated_at->format('d-M-Y h:m');
+            // return $Csdcity->updated_at->diffForHumans();
+        })
+        ->toJson();
+    }
+
 
     public function create()
     {

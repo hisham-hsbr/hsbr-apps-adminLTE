@@ -12,8 +12,8 @@ class TimeZone extends Model
     use HasFactory;
 
      protected $fillable = [
-        'name',
-        'status'
+        // 'name',
+        // 'status'
     ];
 
     public function getCreatedAtAttribute()

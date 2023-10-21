@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('time_zones', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('local_name')->nullable();
+
+            $table->string('utc_code');
+            $table->string('time_zone')->unique();
+            $table->string('country');
+            $table->string('cities')->nullable();
             $table->string('description')->nullable();
             $table->boolean('status')->nullable();
 
-            // default
             $table->unsignedBigInteger('created_by')->unsigned()->index()->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
 

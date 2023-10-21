@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\TimeZone;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Blood extends Model
 {
@@ -15,6 +16,11 @@ class Blood extends Model
         'name',
         'status'
     ];
+
+    public function timeZone()
+    {
+        return $this->belongsTo(TimeZone::class,'time_zone_id','id');
+    }
 
     public function getCreatedAtAttribute()
     {
