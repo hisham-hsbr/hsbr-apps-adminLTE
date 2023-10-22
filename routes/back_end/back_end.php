@@ -1,6 +1,8 @@
 <?php
 
-Route::get('/admin/dashboard', 'BackendDashboardController@index')->name('back-end.dashboard');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/admin/dashboard', 'BackendDashboardController@index')->middleware(['auth', 'verified'])->name('back-end.dashboard');
 Route::get('/admin/dashboard/users', 'BackendDashboardController@fetchUsers')->name('fetch.users');
 
 
