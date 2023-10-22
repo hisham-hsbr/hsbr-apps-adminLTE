@@ -46,10 +46,7 @@ implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-        public function timeZone()
-        {
-            return $this->belongsTo(TimeZone::class,'time_zone_id','id');
-        }
+
 
         public function getCreatedAtAttribute()
         {
@@ -73,10 +70,14 @@ implements MustVerifyEmail
             return $this->belongsTo(User::class,'updated_by','id');
         }
 
+        public function timeZone()
+        {
+            return $this->belongsTo(TimeZone::class,'time_zone_id','id');
+        }
 
         public function cityName()
         {
-            return $this->belongsTo(Country_state_district_city::class,'city_id','id');
+            return $this->belongsTo(CountryStateDistrictCity::class,'city_id','id');
         }
         public function blood()
         {

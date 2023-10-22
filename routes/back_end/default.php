@@ -31,8 +31,10 @@ Route::middleware('auth')->group(function () {
     //Users
     Route::get('/admin/masters/users', 'UserController@index')->name('users.index');
     Route::get('/admin/masters/users/create', 'UserController@create')->name('users.create');
+    Route::get('/admin/masters/users/edit', 'UserController@edit')->name('users.edit');
     Route::post('/admin/masters/users/store', 'UserController@store')->name('users.store');
     Route::get('/admin/masters/users/get', 'UserController@getUsers')->name('get.users');
+    Route::post('/admin/masters/users/csdc/get', 'UserController@getCsdcs')->name('get.csdcs');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,11 +1,11 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'Dashboard')
+@section('PageHead', 'Roles')
 
-@section('PageTitle', 'Dashboard')
+@section('PageTitle', 'Roles')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-    <li class="breadcrumb-item"><a href="/admin/blood">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="/admin/users-management/roles">Roles</a></li>
     <li class="breadcrumb-item active">Index</li>
 @endsection
 
@@ -13,7 +13,7 @@
     <x-links.header-links-dataTable />
 @endsection
 
-@section('actionTitle', 'Dashboard Index')
+@section('actionTitle', 'Roles Index')
 @section('mainContent')
     <section class="content">
         <div class="container-fluid">

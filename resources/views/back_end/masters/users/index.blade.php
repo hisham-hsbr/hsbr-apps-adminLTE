@@ -30,12 +30,25 @@
                                 <thead>
                                     <tr>
                                         <th>Sn</th>
-                                        <th>Name</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>DOB</th>
+                                        <th>Phone1</th>
+                                        <th>Gender</th>
                                         <th>Email</th>
-                                        <th>Created</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Created</th>
+                                        <th>Email Verified</th>
+                                        <th>Status</th>
+                                        <th>City</th>
+                                        <th>Blood</th>
+                                        <th>Time Zone</th>
+                                        <th>Roles</th>
+                                        <th>Special Permissions</th>
+                                        <th>Created By</th>
+                                        <th>Updated By</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -51,12 +64,25 @@
                                 <tfoot>
                                     <tr>
                                         <th>Sn</th>
-                                        <th>Name</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>DOB</th>
+                                        <th>Phone1</th>
+                                        <th>Gender</th>
                                         <th>Email</th>
-                                        <th>Created</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Created</th>
+                                        <th>Email Verified</th>
+                                        <th>Status</th>
+                                        <th>City</th>
+                                        <th>Blood</th>
+                                        <th>Time Zone</th>
+                                        <th>Roles</th>
+                                        <th>Special Permissions</th>
+                                        <th>Created By</th>
+                                        <th>Updated By</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -93,34 +119,101 @@
         defaultContent: ''
         },
         {
-        data: 'email',
-        name: 'email',
-        defaultContent: '',
-        },
-        {
-        data: 'created_at',
-        name: 'created_at',
+        data: 'last_name',
+        name: 'last_name',
         defaultContent: ''
         },
         {
-        data: 'name',
-        name: 'name',
-        defaultContent: ''
+        data: 'dob',
+        name: 'dob',
+        defaultContent: '',
+        },
+        {
+        data: 'phone1',
+        name: 'phone1',
+        defaultContent: '',
+        },
+        {
+        data: 'gender',
+        name: 'gender',
+        defaultContent: '',
         },
         {
         data: 'email',
         name: 'email',
+        defaultContent: ''
+        },
+        {
+        data: 'emailVerified',
+        name: 'emailVerified',
         defaultContent: '',
-        orderable: false,
+        {{-- orderable: false, --}}
         searchable: false
         },
         {
+        data: 'status',
+        name: 'status',
+        defaultContent: ''
+        },
+        {
+        data: 'cityName',
+        name: 'cityName',
+        defaultContent: ''
+        },
+        {
+        data: 'blood',
+        name: 'blood',
+        defaultContent: ''
+        },
+        {
+        data: 'timeZone',
+        name: 'timeZone',
+        defaultContent: ''
+        },
+        {
+        data: 'roles',
+        name: 'roles',
+        defaultContent: ''
+        },
+        {
+        data: 'permissions',
+        name: 'permissions',
+        defaultContent: ''
+        },
+        {
+        data: 'created_by',
+        name: 'created_by',
+        defaultContent: ''
+        },
+        {
+        data: 'updated_by',
+        name: 'updated_by',
+        defaultContent: ''
+        },
+        {
         data: 'created_at',
         name: 'created_at',
+        defaultContent: ''
+        },
+        {
+        data: 'updated_at',
+        name: 'updated_at',
+        defaultContent: ''
+        },
+        {
+        data: 'editLink',
+        name: 'editLink',
+        defaultContent: ''
+        },
+        {
+        data: 'deleteLink',
+        name: 'deleteLink',
         defaultContent: ''
         },
         ]
     </x-links.script-yajara-dataTable>
+
+
 
 
 

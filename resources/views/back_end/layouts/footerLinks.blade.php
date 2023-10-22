@@ -12,8 +12,8 @@
  <!-- Toastr -->
  <script src="{{ asset('back_end_links/adminLinks/plugins/toastr/toastr.min.js') }}"></script>
 
- <!-- dynamic Dependent Dropdown List js -->
- <script src="{{ asset('js/dynamicDependent.js') }}" type="text/javascript"></script>
+ {{-- <!-- dynamic Dependent Dropdown List js -->
+ <script src="{{ asset('js/dynamicDependent.js') }}" type="text/javascript"></script> --}}
 
 
 

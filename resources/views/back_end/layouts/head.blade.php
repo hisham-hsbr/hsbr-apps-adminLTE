@@ -16,8 +16,10 @@
     href="{{ asset('back_end_links/adminLinks/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('back_end_links/adminLinks/dist/css/adminlte.min.css') }}">
-{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+<script src="{{ asset('js/app.js') }}" defer></script>
 <script src="https://kit.fontawesome.com/dd3a80201f.js" crossorigin="anonymous"></script>
+{{-- <!-- dynamic Dependent Dropdown List js -->
+<script src="{{ asset('js/dynamicDependent.js') }}"></script> --}}
 <!-- Toastr -->
 <link rel="stylesheet" href="{{ asset('back_end_links/adminLinks/plugins/toastr/toastr.min.css') }}">
 
