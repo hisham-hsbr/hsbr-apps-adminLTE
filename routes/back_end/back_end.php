@@ -6,4 +6,5 @@ Route::get('/admin/dashboard', 'BackendDashboardController@index')->middleware([
 Route::get('/admin/dashboard/users', 'BackendDashboardController@fetchUsers')->name('fetch.users');
 
 
-require __DIR__.'/default.php';  //default crms
+require __DIR__.'/default.php';  //default CRUD
+require __DIR__.'/price_list.php';  //Price List CRUD
