@@ -20,16 +20,31 @@ class UserController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('permission:User Read', ['only' => ['index']]);
+        $this->middleware('permission:User Create', ['only' => ['create','store']]);
+        $this->middleware('permission:User Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:User Delete', ['only' => ['destroy']]);
+
     }
 
     public function index()
     {
-        $users = User::all();
+        if(Auth::user()->hasRole('Developer')){
+            $users = User::all();
+        }else{
+            $users = User::where('id','>',1)->get();
+        }
+
         return view('back_end.masters.users.index',compact('users'))->with('i');
     }
     public function getUsers()
     {
-        return Datatables::of(User::query())
+        if(Auth::user()->hasRole('Developer')){
+            $users = User::all();
+        }else{
+            $users = User::where('id','>',1)->get();
+        }
+        return Datatables::of($users)
 
         ->setRowId(function ($User) {
             return $User->id;
@@ -155,7 +170,14 @@ class UserController extends Controller
                         ->groupBy('country')
                         ->where('status', 1)->get();
 
-        $roles = Role::where('status', 1)->get();
+        if(Auth::user()->hasRole('Developer')){
+            $roles = Role::all();
+        }else{
+            $roles = Role::where('status', 1)
+            ->where('id','>',1)
+            ->get();
+        }
+
         $users = User::all();
         $permissions = Permission::all()->groupBy('parent');
 
@@ -250,7 +272,13 @@ class UserController extends Controller
                         ->groupBy('country')
                         ->where('status', 1)->get();
 
-        $roles = Role::where('status', 1)->get();
+        if(Auth::user()->hasRole('Developer')){
+            $roles = Role::all();
+        }else{
+            $roles = Role::where('status', 1)
+            ->where('id','>',1)
+            ->get();
+        }
         $user = User::find($id);
         $permissions = Permission::all()->groupBy('parent');
 

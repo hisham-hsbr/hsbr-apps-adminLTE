@@ -46,19 +46,19 @@
 
             {{-- Masters --}}
             @can('User Menu')
-            <x-sidebar.sidebar-nav-level head="Masters" href="#"
-                menu_open="{{ request()->is('admin/masters*') ? 'menu-open' : '' }}"
-                active="{{ request()->is('admin/masters/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
-                drop_icon="fas fa-angle-left">
-                {{-- Menu User --}}
-                <x-sidebar.sidebar-nav-multi-level head="Users" href="{{ route('users.index') }}" menu_open=""
-                    active="{{ request()->is('admin/masters/users*') ? 'active' : '' }}" menu_icon="fa fa-users"
-                    drop_icon="" />
-                {{-- Menu Blood --}}
-                <x-sidebar.sidebar-nav-multi-level head="Bloods" href="{{ route('bloods.index') }}" menu_open=""
-                    active="{{ request()->is('admin/masters/bloods*') ? 'active' : '' }}" menu_icon="fa fa-tint"
-                    drop_icon="" />
-            </x-sidebar.sidebar-nav-level>
+                <x-sidebar.sidebar-nav-level head="Masters" href="#"
+                    menu_open="{{ request()->is('admin/masters*') ? 'menu-open' : '' }}"
+                    active="{{ request()->is('admin/masters/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
+                    drop_icon="fas fa-angle-left">
+                    {{-- Menu User --}}
+                    <x-sidebar.sidebar-nav-multi-level head="Users" href="{{ route('users.index') }}" menu_open=""
+                        active="{{ request()->is('admin/masters/users*') ? 'active' : '' }}" menu_icon="fa fa-users"
+                        drop_icon="" />
+                    {{-- Menu Blood --}}
+                    <x-sidebar.sidebar-nav-multi-level head="Bloods" href="{{ route('bloods.index') }}" menu_open=""
+                        active="{{ request()->is('admin/masters/bloods*') ? 'active' : '' }}" menu_icon="fa fa-tint"
+                        drop_icon="" />
+                </x-sidebar.sidebar-nav-level>
             @endcan
             {{-- Thaya --}}
             <x-sidebar.sidebar-nav-level head="Thaya" href="#"
@@ -74,19 +74,19 @@
 
             {{-- Users Management --}}
             @can('User Menu')
-            <x-sidebar.sidebar-nav-level head="Users Management" href="#"
-                menu_open="{{ request()->is('admin/users-management*') ? 'menu-open' : '' }}"
-                active="{{ request()->is('admin/users-management/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
-                drop_icon="fas fa-angle-left">
-                {{-- Menu Roles --}}
-                <x-sidebar.sidebar-nav-multi-level head="Roles" href="{{ route('roles.index') }}" menu_open=""
-                    active="{{ request()->is('admin/users-management/roles*') ? 'active' : '' }}"
-                    menu_icon="fa fa-user-secret" drop_icon="" />
-                {{-- Menu Permission --}}
-                <x-sidebar.sidebar-nav-multi-level head="Permission" href="{{ route('permissions.index') }}"
-                    menu_open="" active="{{ request()->is('admin/users-management/permissions*') ? 'active' : '' }}"
-                    menu_icon="fa fa-lock" drop_icon="" />
-            </x-sidebar.sidebar-nav-level>
+                <x-sidebar.sidebar-nav-level head="Users Management" href="#"
+                    menu_open="{{ request()->is('admin/users-management*') ? 'menu-open' : '' }}"
+                    active="{{ request()->is('admin/users-management/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
+                    drop_icon="fas fa-angle-left">
+                    {{-- Menu Roles --}}
+                    <x-sidebar.sidebar-nav-multi-level head="Roles" href="{{ route('roles.index') }}" menu_open=""
+                        active="{{ request()->is('admin/users-management/roles*') ? 'active' : '' }}"
+                        menu_icon="fa fa-user-secret" drop_icon="" />
+                    {{-- Menu Permission --}}
+                    <x-sidebar.sidebar-nav-multi-level head="Permission" href="{{ route('permissions.index') }}"
+                        menu_open="" active="{{ request()->is('admin/users-management/permissions*') ? 'active' : '' }}"
+                        menu_icon="fa fa-lock" drop_icon="" />
+                </x-sidebar.sidebar-nav-level>
             @endcan
         </ul>
     </nav>

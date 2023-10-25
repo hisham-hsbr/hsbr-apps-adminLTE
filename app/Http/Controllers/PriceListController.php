@@ -19,6 +19,11 @@ class PriceListController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('permission:Price List Read', ['only' => ['index']]);
+        $this->middleware('permission:Price List Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Price List Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:Price List Delete', ['only' => ['destroy']]);
+
     }
 
     public function index()

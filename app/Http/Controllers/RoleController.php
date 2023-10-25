@@ -18,11 +18,21 @@ class RoleController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('permission:Role Read', ['only' => ['index']]);
+        $this->middleware('permission:Role Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Role Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:Role Delete', ['only' => ['destroy']]);
+
     }
 
     public function index()
     {
-        $roles = Role::all();
+        if(Auth::user()->hasRole('Developer')){
+            $roles = Role::all();
+        }else{
+            $roles = Role::where('id','>',1)->get();
+        }
+
         return view('back_end.spatie.roles.index',compact('roles'))->with('i');
     }
 
@@ -77,17 +87,41 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
-        //
+        $role        = Role::find($id);
+        $role        = $role->load('permissions');
+        $permissions = Permission::all()->groupBy('parent');
+        return view('back_end.spatie.roles.edit', compact('role', 'permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => "required|unique:roles,name,$id",
+            'permission' => 'required',
+        ]);
+
+
+            $role = Role::find($id);
+            $role->name = $request->name;
+
+        if ($request->status==0)
+        {
+            $role->status==0;
+        }
+
+        $role->status = $request->status;
+
+        $role->updated_by = Auth::user()->id;
+
+        $role->update($request->all());
+        $role->syncPermissions($request->permission);
+
+        return redirect()->route('roles.index')->with('message_store', "{$request->name} -  Role Updated Successfully");
     }
 
     /**

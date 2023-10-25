@@ -16,6 +16,11 @@ class PermissionController extends Controller
     {
         $this->middleware('auth');
 
+        $this->middleware('permission:Permission Read', ['only' => ['index']]);
+        $this->middleware('permission:Permission Create', ['only' => ['create','store']]);
+        $this->middleware('permission:Permission Edit', ['only' => ['Edit','Update']]);
+        $this->middleware('permission:Permission Delete', ['only' => ['destroy']]);
+
     }
 
     public function index()
