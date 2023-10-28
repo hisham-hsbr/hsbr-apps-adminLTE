@@ -4,41 +4,57 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
-    //Bloods
-    Route::get('/admin/masters/bloods', 'BloodController@index')->name('bloods.index');
-    Route::get('/admin/masters/bloods/create', 'BloodController@create')->name('bloods.create');
-
-
-
-
 
     //Roles
-    Route::get('/admin/users-management/roles', 'RoleController@index')->name('roles.index');
-    Route::get('/admin/users-management/roles/create', 'RoleController@create')->name('roles.create');
-    Route::get('/admin/users-management/roles/edit/{id}', 'RoleController@edit')->name('roles.edit');
-    Route::patch('/admin/users-management/roles/update/{id}', 'RoleController@update')->name('roles.update');
-    Route::post('/admin/users-management/roles/store', 'RoleController@store')->name('roles.store');
-    Route::delete('/admin/users-management/roles/destroy', 'RoleController@destroy')->name('roles.destroy');
+    Route::controller('RoleController')->prefix('/admin/users-management/roles')->name('roles.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/update/{id}', 'update')->name('update');
+        Route::post('/store', 'store')->name('store');
+        Route::delete('/destroy', 'destroy')->name('destroy');
+    });
 
     //Permissions
-    // Route::resource('admin/users-management/permissions', 'PermissionController');
-    Route::get('/admin/users-management/permissions', 'PermissionController@index')->name('permissions.index');
-    Route::get('/admin/users-management/permissions/create', 'PermissionController@create')->name('permissions.create');
-    Route::get('/admin/users-management/permissions/edit/{id}', 'PermissionController@edit')->name('permissions.edit');
-    Route::patch('/admin/users-management/permissions/update/{id}', 'PermissionController@update')->name('permissions.update');
-    Route::post('/admin/users-management/permissions/store', 'PermissionController@store')->name('permissions.store');
-    Route::delete('/admin/users-management/permissions/', 'PermissionController@destroy')->name('permissions.destroy');
-    Route::get('/admin/users-management/permissions/get', 'PermissionController@getPermissions')->name('get.permissions');
+    Route::controller('PermissionController')->prefix('/admin/users-management/permissions')->name('permissions.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/update/{id}', 'update')->name('update');
+        Route::post('/store', 'store')->name('store');
+        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::get('/get', 'permissionsGet')->name('get');
+    });
 
     //Users
-    Route::get('/admin/masters/users', 'UserController@index')->name('users.index');
-    Route::get('/admin/masters/users/create', 'UserController@create')->name('users.create');
-    Route::get('/admin/masters/users/edit/{id}', 'UserController@edit')->name('users.edit');
-    Route::patch('/admin/masters/users/update/{id}', 'UserController@update')->name('users.update');
-    Route::post('/admin/masters/users/store', 'UserController@store')->name('users.store');
-    Route::get('/admin/masters/users/get', 'UserController@getUsers')->name('get.users');
-    Route::post('/admin/masters/users/csdc/get', 'UserController@getCsdcs')->name('get.csdcs');
+    Route::controller('UserController')->prefix('/admin/masters/users')->name('users.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/update/{id}', 'update')->name('update');
+        Route::post('/store', 'store')->name('store');
+        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::get('/get', 'usersGet')->name('get');
+        Route::post('/csdc/get', 'csdcsGet')->name('csdcs.get');
+    });
 
+    //activity-logs
+    Route::controller('ActivitylogController')->prefix('/admin/users-management/activity-logs')->name('activityLogs.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/get', 'activityLogsGet')->name('get');
+    });
+
+    //Bloods
+    Route::controller('BloodController')->prefix('/admin/masters/bloods')->name('bloods.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::patch('/update/{id}', 'update')->name('update');
+        Route::post('/store', 'store')->name('store');
+        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::get('/get', 'bloodsGet')->name('get');
+    });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

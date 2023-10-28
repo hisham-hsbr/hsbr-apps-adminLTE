@@ -18,7 +18,50 @@
 
 @section('actionTitle', 'Bloods Index')
 @section('mainContent')
-    <h1>blood create</h1>
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <!-- left column -->
+        <div class="col-md-10">
+            <form role="form" action="{{ route('bloods.store') }}" method="post" enctype="multipart/form-data"
+                id="quickForm">
+                {{ csrf_field() }}
+                <div class="card-body">
+                    <!-- /.card-header -->
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label for="name" class="required col-form-label">Name</label>
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}"
+                                placeholder="Name">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="lastName" class="required col-form-label">Description</label>
+                            <input type="text" name="description" class="form-control" value="{{ old('description') }}"
+                                placeholder="Description">
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-10 pl-5 pt-2">
+                        <input type="checkbox" class="form-check-input" name="status" value="1" id="status" />
+                        <label class="form-check-label" for="status">Active</label>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="">
+                    {{-- @can('User Menu') --}}
+                    <button type="submit" class="btn btn-primary float-right ml-1">Save</button>
+                    {{-- @endcan --}}
+                    <a type="button" href="{{ route('bloods.index') }}" class="btn btn-warning float-right ml-1">Back</a>
+                </div>
+                <!-- /.card-footer -->
+            </form>
+
+        </div>
+        <!--/.col (left) -->
+
+    </div>
 
 @endsection
 @section('actionFooter', 'Footer')

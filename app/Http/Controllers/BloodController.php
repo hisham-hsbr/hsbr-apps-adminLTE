@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blood;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BloodController extends Controller
 {
@@ -38,7 +39,28 @@ class BloodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required|unique:bloods',
+            'description' => 'required',
+            ]);
+
+        $blood = new Blood();
+        $blood->name = $request->name;
+        $blood->description = $request->description;
+
+        if ($request->status==0)
+        {
+            $blood->status==0;
+        }
+
+        $blood->status = $request->status;
+
+        $blood->created_by = Auth::user()->id;
+        $blood->updated_by = Auth::user()->id;
+
+        $blood->save();
+        return redirect(route('bloods.index'))->with('message_store', 'Blood Created Successfully');
     }
 
     /**

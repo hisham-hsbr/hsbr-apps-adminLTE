@@ -2,72 +2,56 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActivityLog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+use Spatie\Activitylog\Models\Activity;
 
-class ActivityLogController extends Controller
+class ActivitylogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
     public function __construct()
     {
         $this->middleware('auth');
+
+        // $this->middleware('permission:Permission Read', ['only' => ['index']]);
+        // $this->middleware('permission:Permission Create', ['only' => ['create','store']]);
+        // $this->middleware('permission:Permission Edit', ['only' => ['Edit','Update']]);
+        // $this->middleware('permission:Permission Delete', ['only' => ['destroy']]);
 
     }
 
     public function index()
     {
-        $activityLogs = ActivityLog::all();
-        return view('folder.ActivityLogs.folder',compact('ActivityLogs'))->with('i');
+        $activityLogs = Activity::all();
+        return view('back_end.spatie.activity-log.index',compact('activityLogs'))->with('i');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show($id)
     {
-        //
+        $activityLog = Activity::find($id);
+        $users = User::all();
+        return view('back_end.spatie.activity-log.show',compact('activityLog','users'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function activityLogsGet()
     {
-        //
-    }
+        return Datatables::of(Activity::query())
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ActivityLog $activityLog)
-    {
-        //
-    }
+        ->setRowId(function ($activity) {
+            return $activity->id;
+            })
+            ->addColumn('created_at', function (Activity $activity) {
+                return $activity->created_at->format('d-M-Y h:m');
+            })
+            ->addColumn('updated_at', function (Activity $activity) {
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ActivityLog $activityLog)
-    {
-        //
-    }
+                return $activity->updated_at->format('d-M-Y h:m');
+            })
+            ->addColumn('editLink', function (Activity $activity) {
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ActivityLog $activityLog)
-    {
-        //
-    }
+                $editLink ='<a href="'. route('activityLogs.show', $activity->id) .'" class="ml-2"><i class="fa-solid fa fa-eye"></i></a>';
+                   return $editLink;
+            })
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ActivityLog $activityLog)
-    {
-        //
+           ->rawColumns(['status','editLink'])
+            ->toJson();
     }
 }

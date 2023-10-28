@@ -115,7 +115,7 @@
 
         });
         },
-        ajax: '{!! route('get.permissions') !!}',
+        ajax: '{!! route('permissions.get') !!}',
 
         columns: [{
         data: 'id',

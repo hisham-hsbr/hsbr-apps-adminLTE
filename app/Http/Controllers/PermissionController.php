@@ -29,7 +29,7 @@ class PermissionController extends Controller
         return view('back_end.spatie.permissions.index',compact('permissions'))->with('i');
     }
 
-    public function getPermissions()
+    public function permissionsGet()
     {
         return Datatables::of(Permission::query())
 

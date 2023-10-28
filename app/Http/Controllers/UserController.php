@@ -25,6 +25,8 @@ class UserController extends Controller
         $this->middleware('permission:User Edit', ['only' => ['Edit','Update']]);
         $this->middleware('permission:User Delete', ['only' => ['destroy']]);
 
+        // $this->middleware(['role:manager','permission:publish articles|edit articles']);
+
     }
 
     public function index()
@@ -37,7 +39,7 @@ class UserController extends Controller
 
         return view('back_end.masters.users.index',compact('users'))->with('i');
     }
-    public function getUsers()
+    public function usersGet()
     {
         if(Auth::user()->hasRole('Developer')){
             $users = User::all();
@@ -186,7 +188,7 @@ class UserController extends Controller
         // return view('back_end.masters.users.create',compact('roles','permissions','users','bloods','educations','countries','country_list','jobs','time_zones'));
         // return view('admin.users.create',compact('roles','permissions','users','bloods','educations','countries','country_list','jobs'))->with('country_list', $country_list);
     }
-    function getCsdcs(Request $request)
+    function csdcsGet(Request $request)
     {
         $select = $request->get('select');
         $value = $request->get('value');

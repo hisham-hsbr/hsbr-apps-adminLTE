@@ -60,17 +60,7 @@
                         drop_icon="" />
                 </x-sidebar.sidebar-nav-level>
             @endcan
-            {{-- Thaya --}}
-            <x-sidebar.sidebar-nav-level head="Thaya" href="#"
-                menu_open="{{ request()->is('admin/price-lists*') ? 'menu-open' : '' }}"
-                active="{{ request()->is('admin/price-lists/*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
-                drop_icon="fas fa-angle-left">
-                {{-- price list --}}
-                <x-sidebar.sidebar-nav-multi-level head="Price Lists" href="{{ route('priceLists.index') }}"
-                    menu_open="" active="{{ request()->is('admin/price-lists*') ? 'active' : '' }}"
-                    menu_icon="fa fa-money" drop_icon="" />
 
-            </x-sidebar.sidebar-nav-level>
 
             {{-- Users Management --}}
             @can('User Menu')
