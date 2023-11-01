@@ -34,7 +34,7 @@ class UserController extends Controller
         if(Auth::user()->hasRole('Developer')){
             $users = User::all();
         }else{
-            $users = User::where('id','>',1)->get();
+            $users = User::where('id','>',2)->get();
         }
 
         return view('back_end.masters.users.index',compact('users'))->with('i');
@@ -44,7 +44,7 @@ class UserController extends Controller
         if(Auth::user()->hasRole('Developer')){
             $users = User::all();
         }else{
-            $users = User::where('id','>',1)->get();
+            $users = User::where('id','>',2)->get();
         }
         return Datatables::of($users)
 
@@ -185,8 +185,6 @@ class UserController extends Controller
 
 
         return view('back_end.masters.users.create',compact('roles','permissions','users','bloods','time_zones','country_list'));
-        // return view('back_end.masters.users.create',compact('roles','permissions','users','bloods','educations','countries','country_list','jobs','time_zones'));
-        // return view('admin.users.create',compact('roles','permissions','users','bloods','educations','countries','country_list','jobs'))->with('country_list', $country_list);
     }
     function csdcsGet(Request $request)
     {
@@ -208,10 +206,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        // dd($request->city);
         $this->validate($request, [
             'name' => 'required',
-            'last_name' => 'required',
             'dob' => 'required',
             'phone1' => 'required',
             'blood_id' => 'required',
@@ -220,7 +216,7 @@ class UserController extends Controller
             'gender' => 'required',
 
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            'password' => 'required|same:password_confirm',
             'roles' => 'required'
         ]);
 
@@ -242,11 +238,6 @@ class UserController extends Controller
         $user->email  = $request->email;
         $user->password = Hash::make($request['password']);
 
-
-
-        // $user->created_by = 1;
-        // $user->updated_by = 1;
-        // $user->save();
 
         if ($request->status==0)
             {

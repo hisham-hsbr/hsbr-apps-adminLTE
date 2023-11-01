@@ -43,43 +43,43 @@
                                 <!-- /.card-header -->
                                 <!-- form start -->
                                 <div class="card-body">
-                                    <div class="form-group row">
-                                        <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4">
                                             <label for="name" class="required col-form-label">First
                                                 Name</label>
-                                            <input type="text" name="name" class="form-control"
+                                            <input type="text" name="name" id="name" class="form-control"
                                                 value="{{ $user->name }}" placeholder="First Name">
                                         </div>
-                                        <div class="col-sm-4">
-                                            <label for="lastName" class="required col-form-label">Last
+                                        <div class="form-group col-sm-4">
+                                            <label for="last_name" class="required col-form-label">Last
                                                 Name</label>
-                                            <input type="text" name="last_name" class="form-control"
+                                            <input type="text" name="last_name" id="last_name" class="form-control"
                                                 value="{{ $user->last_name }}" placeholder="Last Name">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="dob" class="required col-form-label">Date of
                                                 Birth</label>
-                                            <input type="date" name="dob" class="form-control"
+                                            <input type="date" name="dob" id="dob" class="form-control"
                                                 value="{{ $user->dob }}" placeholder="Enter birth date">
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="phone1" class="required col-form-label">Phone
                                                 Number 1</label>
-                                            <input type="number" name="phone1" class="form-control"
+                                            <input type="number" name="phone1" id="phone1" class="form-control"
                                                 value="{{ $user->phone1 }}" placeholder="Phone Number 1">
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="phone2" class="col-form-label">Phone
                                                 Number 2</label>
                                             <input type="number" name="phone2" class="form-control"
                                                 value="{{ $user->phone2 }}" placeholder="Phone Number 2">
                                         </div>
-                                        <div class="col-sm-4">
-                                            <label for="blood" class="required col-form-label">Blood
+                                        <div class="form-group col-sm-4">
+                                            <label for="blood_id" class="required col-form-label">Blood
                                                 Group</label>
-                                            <select name="blood_id" class="form-control select2">
+                                            <select name="blood_id" id="blood_id" class="form-control select2">
                                                 <option disabled selected>--Blood Group--</option>
                                                 @foreach ($bloods as $blood)
                                                     <option {{ $user->blood->id == $blood->id ? 'selected' : '' }}
@@ -88,7 +88,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="gender" class="required col-form-label">Gender</label>
                                             <select name="gender" id="gender" class="form-control select2">
                                                 <option disabled {{ $user->gender == '' ? 'selected' : '' }}>--Gender--
@@ -106,8 +106,8 @@
                                             </select>
                                         </div>
                                         <div class="col-sm-8">
-                                            <label for="time_zone" class="required col-form-label">Time Zone</label>
-                                            <select name="time_zone_id" class="form-control select2">
+                                            <label for="time_zone_id" class="required col-form-label">Time Zone</label>
+                                            <select name="time_zone_id" id="time_zone_id" class="form-control select2">
                                                 <option disabled selected>--Time Zone--</option>
                                                 @foreach ($time_zones as $time_zone)
                                                     <option {{ $user->timeZone->id == $time_zone->id ? 'selected' : '' }}
@@ -118,15 +118,15 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="email_verified_at" class="required col-form-label">Email
                                                 verified</label>
-                                            <input type="date" name="email_verified_at" class="form-control"
-                                                value="{{ $user->email_verified_at }}">
+                                            <input type="datetime-local" name="email_verified_at" id="email_verified_at"
+                                                class="form-control" value="{{ $user->email_verified_at }}">
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="email" class="required col-form-label">Email address</label>
-                                            <input type="email" name="email" class="form-control"
+                                            <input type="email" name="email" id="email" class="form-control"
                                                 value="{{ $user->email }}" placeholder="Enter email">
                                         </div>
 
@@ -138,8 +138,8 @@
                                     <h3 class="card-title">Address Details</h3>
                                 </div>
                                 <div class="card-body">
-                                    <div class="form-group row">
-                                        <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4">
                                             <label for="country" class="required col-form-label">Select
                                                 Country</label>
                                             <select name="country" id="country" class="form-control select2 dynamic"
@@ -155,7 +155,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="state" class="required col-form-label">Select
                                                 State</label>
                                             <select name="state" id="state" class="form-control select2 dynamic"
@@ -166,7 +166,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="district" class="required col-form-label">Select
                                                 District</label>
                                             <select name="district" id="district" class="form-control select2 dynamic"
@@ -177,7 +177,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="form-group col-sm-4">
                                             <label for="city" class="required col-form-label">Select
                                                 City</label>
                                             <select name="city" id="city" class="form-control select2 dynamic"
@@ -188,8 +188,8 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        {{ $country->id }}
-                                        <div class="col-sm-4">
+                                        {{ $user->cityName->id }}
+                                        <div class="form-group col-sm-4">
                                             <label for="zip_code" class="required col-form-label">Select Zip
                                                 Code</label>
                                             <select name="zip_code" id="zip_code" class="form-control select2">
@@ -208,8 +208,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Assign Roles</label>
-                                        <select name="roles[]" class="duallistbox" multiple="multiple">
+                                        <label for="roles">Assign Roles</label>
+                                        <select name="roles[]" id="roles" class="duallistbox" multiple="multiple">
                                             @foreach ($roles as $role)
                                                 <option @if (in_array($role->id, $user->roles->pluck('id')->toArray())) selected @endif
                                                     value="{{ $role->id }}">{{ $role->name }}</option>
@@ -252,9 +252,9 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="">
-                            {{-- @can('User Menu') --}}
-                            <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
-                            {{-- @endcan --}}
+                            @can('User Update')
+                                <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
+                            @endcan
                             <a type="button" href="{{ route('roles.index') }}"
                                 class="btn btn-warning float-right ml-1">Back</a>
                         </div>
@@ -290,6 +290,135 @@
     </script>
 
     <x-message.message />
+
+    <x-links.footer-link-jquery-validation />
+
+    <script>
+        $(function() {
+            // $.validator.setDefaults({
+            //     submitHandler: function() {
+            //         alert("Form successful submitted!");
+            //     }
+            // });
+            $('#quickForm').validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    dob: {
+                        required: true,
+                        date: true,
+                    },
+                    phone1: {
+                        required: true,
+                        number: true,
+                        minlength: 10
+                    },
+                    blood_id: {
+                        required: true,
+                    },
+                    gender: {
+                        required: true,
+                    },
+                    time_zone_id: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    country: {
+                        required: true,
+                    },
+                    state: {
+                        required: true,
+                    },
+                    district: {
+                        required: true,
+                    },
+                    city: {
+                        required: true,
+                    },
+                    zip_code: {
+                        required: true,
+                    },
+                    roles: {
+                        required: true,
+                    },
+                    // password_confirm: {
+                    //     minlength: 5
+                    //     equalTo: "#password"
+                    // },
+                    terms: {
+                        required: true
+                    },
+                },
+                messages: {
+                    name: {
+                        required: "Please Enter First Name",
+                    },
+                    dob: {
+                        required: "Please Enter Date Of Birth",
+                    },
+                    phone1: {
+                        required: "Please Enter Phone Number",
+                        minlength: "Your Must Be At Least 10 Number Long"
+                    },
+                    blood_id: {
+                        required: "Please Select Blood Group",
+                    },
+                    gender: {
+                        required: "Please Select Gender",
+                    },
+                    time_zone_id: {
+                        required: "Please Select Time Zone",
+                    },
+                    email: {
+                        required: "Please enter a email address",
+                        email: "Please enter a valid email address"
+                    },
+                    password: {
+                        required: "Please provide a password",
+                        minlength: "Your password must be at least 5 characters long"
+                    },
+                    country: {
+                        required: "Please Select country",
+                    },
+                    state: {
+                        required: "Please Select state",
+                    },
+                    district: {
+                        required: "Please Select district",
+                    },
+                    city: {
+                        required: "Please Select city",
+                    },
+                    zip_code: {
+                        required: "Please Select Zip Code",
+                    },
+                    roles: {
+                        required: "Please Select Role",
+                    },
+                    terms: "Please accept our terms"
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
 
     <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>

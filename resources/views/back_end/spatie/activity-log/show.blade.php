@@ -1,12 +1,12 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'activityLog Create')
+@section('PageHead', 'Activity Log Show')
 
-@section('PageTitle', 'activityLog Create')
+@section('PageTitle', 'Activity Log Show')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="/admin/activityLogs">activityLogs</a></li>
-    <li class="breadcrumb-item active">Create</li>
+    <li class="breadcrumb-item active">Show</li>
 @endsection
 
 @section('headLinks')
@@ -20,10 +20,10 @@
         href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
-@section('actionTitle', 'activityLog Create')
+@section('actionTitle', 'Activity Log Show')
 @section('mainContent')
     <div class="container-fluid">
-        @can('activityLog Menu')
+        @can('Activity Logs Read')
             <div class="row">
                 <div class="col-md-1">
 
@@ -59,7 +59,7 @@
                                             {{ $activityLog->causer_type }}</code></label>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="col-sm-4">User Name</label>
+                                    <label class="col-sm-4">Updated User</label>
                                     <label><code>:
                                             {{ $activityLog->activityUser->name }}</code></label>
                                 </div>
@@ -82,7 +82,7 @@
                                                 <tr>
                                                     <th colspan="2" class="bg-secondary color-palette">
                                                         @if ($key == 'attributes')
-                                                            New {{ $activityLog->log_name }}
+                                                            New {{ $activityLog->event }} {{ $activityLog->log_name }}
                                                         @elseif ($key == 'old')
                                                             Old {{ $activityLog->log_name }}
                                                         @endif

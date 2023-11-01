@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::patch('/update/{id}', 'update')->name('update');
         Route::post('/store', 'store')->name('store');
-        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::delete('/destroy{id}', 'destroy')->name('destroy');
         Route::get('/get', 'permissionsGet')->name('get');
     });
 

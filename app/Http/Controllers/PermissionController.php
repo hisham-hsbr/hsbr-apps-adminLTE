@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Auth;
 
 class PermissionController extends Controller
 {
@@ -25,7 +26,12 @@ class PermissionController extends Controller
 
     public function index()
     {
-        $permissions = Permission::all();
+
+        if(Auth::user()->hasRole('Developer')){
+            $permissions = Permission::all();
+        }else{
+            $permissions = Permission::where('id','>',2)->get();
+        }
         return view('back_end.spatie.permissions.index',compact('permissions'))->with('i');
     }
 
@@ -90,7 +96,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('back_end.spatie.permissions.create');
     }
 
     /**
@@ -98,7 +104,33 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'parent' => 'required',
+        ]);
+        $permission = new Permission();
+
+
+        $permission->name = $request->name;
+        $permission->parent  = $request->parent;
+        $permission->guard_name = "web";
+
+
+        if ($request->status==0)
+            {
+                $permission->status==0;
+            }
+
+        $permission->status = $request->status;
+
+        $permission->created_by = Auth::user()->id;
+        $permission->updated_by = Auth::user()->id;
+
+        $permission->save();
+
+        return redirect()->route('permissions.index')
+                        ->with('message_store', 'Permission Created Successfully');
     }
 
     /**
@@ -112,17 +144,42 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Permission $permission)
+    public function edit($id)
     {
-        //
+        $permission  = Permission::find($id);
+        return view('back_end.spatie.permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'parent' => 'required',
+        ]);
+        $permission = Permission::find($id);
+
+
+        $permission->name = $request->name;
+        $permission->parent  = $request->parent;
+        $permission->guard_name = "web";
+
+
+        if ($request->status==0)
+            {
+                $permission->status==0;
+            }
+
+        $permission->status = $request->status;
+
+        $permission->updated_by = Auth::user()->id;
+
+        $permission->save();
+
+        return redirect()->route('permissions.index')
+                        ->with('message_store', 'Permission Updated Successfully');
     }
 
     /**
@@ -130,7 +187,6 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        dd('de');
          $permission  = Permission::findOrFail($id);
         $permission->delete();
 
