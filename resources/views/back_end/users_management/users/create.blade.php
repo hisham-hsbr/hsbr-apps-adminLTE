@@ -4,8 +4,8 @@
 
 @section('PageTitle', 'User Create')
 @section('pageNavHeader')
-    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 
@@ -126,15 +126,26 @@
 
                                         <div class="form-group col-sm-4">
                                             <label for="password" class="required col-form-label">Password</label>
+                                            <x-form.button button_type="button" button_oneclick="generate()"
+                                                button_class="btn btn-warning btn-xs generate-password"
+                                                button_icon="fa fa-plus" button_name="Generate" />
                                             <input type="password" name="password" id="password" class="form-control"
                                                 placeholder="Password">
+                                            <div class="form-group-append">
+                                                <button type="button" class="btn btn-outline-secondary show-password"><i
+                                                        class="fa-regular fa-eye-slash"></i></button>
+                                            </div>
                                         </div>
 
                                         <div class="form-group col-sm-4">
                                             <label for="password_confirm" class="required col-form-label">Confirm
                                                 Password</label>
                                             <input type="password" name="password_confirm" id="password_confirm"
-                                                class="form-control" placeholder="Confirm Password">
+                                                class="form-control " placeholder="Confirm Password">
+                                            <div class="form-group-append">
+                                                <button type="button" class="btn btn-outline-secondary show-password"><i
+                                                        class="fa-regular fa-eye-slash"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -278,6 +289,8 @@
         });
     </script>
 
+    <x-script.password-generate />
+
     <x-message.message />
 
     <x-links.footer-link-jquery-validation />
@@ -414,37 +427,7 @@
 
     <script src="jquery.min.js"></script>
     <script src="bootstrap.min.js"></script>
-    <script>
-        $("#checkall").change(function() {
-            $(".checkitem").prop("checked", $(this).prop("checked"))
-        })
-        $(".checkitem").change(function() {
-            if ($(this).prop("checked") == false) {
-                $("#checkall").prop("checked", false)
-            }
-            if ($(".checkitem:checked").length == $(".checkitem").length) {
-                $("#checkall").prop("checked", true)
-            }
-        })
-    </script>
-    <script>
-        var checkid = '{{ $key }}';
-        var checkclass = '{{ $key }}';
 
-        $('#checkall' + checkid).change(function() {
-            $('.check' + checkclass).prop("checked",
-                $(this).prop("checked"))
-        })
-        $('.check' + checkclass).change(function() {
-            if ($(this).prop("checked") == false) {
-                $("#checkall' + checkid").prop("checked", false)
-            }
-            if ($('.check' + checkclasschecked).length == $('.check' +
-                    checkclass).length) {
-                $("#checkall' + checkid").prop("checked", true)
-            }
-        })
-    </script>
     <!-- Bootstrap4 Duallistbox -->
     <script
         src="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">

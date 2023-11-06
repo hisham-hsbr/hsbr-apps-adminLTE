@@ -23,13 +23,13 @@ class ActivitylogController extends Controller
     public function index()
     {
         $activityLogs = Activity::all();
-        return view('back_end.spatie.activity-log.index',compact('activityLogs'))->with('i');
+        return view('back_end.users_management.activity-log.index',compact('activityLogs'))->with('i');
     }
     public function show($id)
     {
         $activityLog = Activity::find($id);
         $users = User::all();
-        return view('back_end.spatie.activity-log.show',compact('activityLog','users'));
+        return view('back_end.users_management.activity-log.show',compact('activityLog','users'));
     }
     public function activityLogsGet()
     {
@@ -41,17 +41,22 @@ class ActivitylogController extends Controller
             ->addColumn('created_at', function (Activity $activity) {
                 return $activity->created_at->format('d-M-Y h:m');
             })
+
             ->addColumn('updated_at', function (Activity $activity) {
 
                 return $activity->updated_at->format('d-M-Y h:m');
             })
-            ->addColumn('editLink', function (Activity $activity) {
+            ->editColumn('created_user', function (Activity $activity) {
 
-                $editLink ='<a href="'. route('activityLogs.show', $activity->id) .'" class="ml-2"><i class="fa-solid fa fa-eye"></i></a>';
-                   return $editLink;
+                return ucwords($activity->activityUser->name);
+            })
+            ->addColumn('viewLink', function (Activity $activity) {
+
+                $viewLink ='<a href="'. route('activityLogs.show', $activity->id) .'" class="ml-2"><i class="fa-solid fa fa-eye"></i></a>';
+                   return $viewLink;
             })
 
-           ->rawColumns(['status','editLink'])
+           ->rawColumns(['status','viewLink'])
             ->toJson();
     }
 }

@@ -4,8 +4,8 @@
 
 @section('PageTitle', 'Users')
 @section('pageNavHeader')
-    <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-    <li class="breadcrumb-item"><a href="/admin/masters/users">Users</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
     <li class="breadcrumb-item active">Index</li>
 @endsection
 
@@ -214,6 +214,27 @@
 
                 // dom: 'Bfrtip',
                 dom: '<"html5buttons"B>lTftigp',
+                "fnDrawCallback": function(oSettings) {
+                    $('.delete-user').on('click', function() {
+                        var userID = $(this).data('user_id');
+                        var isReady = confirm("Are you sure to delete");
+                        var myHeaders = new Headers({
+                            "X-CSRF-TOKEN": $("input[name='_token']").val()
+                        });
+                        if (isReady) {
+                            fetch("/admin/users-management/users/destroy" +
+                                userID, {
+                                    method: 'DELETE',
+                                    headers: myHeaders,
+                                }).then(function(response) {
+                                return response.json();
+                            });
+                            $('#example1').DataTable().ajax.reload();
+                            toastr.danger("user Deleted");
+                        }
+
+                    });
+                },
 
                 // "buttons": ["excel", "pdf", "print", "colvis"],
                 buttons: [

@@ -11,6 +11,7 @@ use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
 
@@ -37,7 +38,7 @@ class UserController extends Controller
             $users = User::where('id','>',2)->get();
         }
 
-        return view('back_end.masters.users.index',compact('users'))->with('i');
+        return view('back_end.users_management.users.index',compact('users'))->with('i');
     }
     public function usersGet()
     {
@@ -152,11 +153,12 @@ class UserController extends Controller
         ->addColumn('deleteLink', function (User $user) {
            $CSRFToken = "csrf_field()";
             $deleteLink ='
-                                           <button class="btn btn-link delete-user" data-user_id="'.$user->id.'" type="submit"><i
-                                                   class="fa-solid fa-trash-can text-danger"></i>
-                                           </button>';
+                        <button class="btn btn-link delete-user" data-user_id="'.$user->id.'" type="submit"><i
+                                class="fa-solid fa-trash-can text-danger"></i>
+                        </button>';
                return $deleteLink;
         })
+
 
        ->rawColumns(['emailVerified','roles','permissions','status','editLink','deleteLink'])
         ->toJson();
@@ -184,7 +186,7 @@ class UserController extends Controller
         $permissions = Permission::all()->groupBy('parent');
 
 
-        return view('back_end.masters.users.create',compact('roles','permissions','users','bloods','time_zones','country_list'));
+        return view('back_end.users_management.users.create',compact('roles','permissions','users','bloods','time_zones','country_list'));
     }
     function csdcsGet(Request $request)
     {
@@ -257,6 +259,105 @@ class UserController extends Controller
                         ->with('message_store', 'User Created Successfully');
     }
 
+    public function profileEdit()
+    {
+        $bloods = Blood::where('status', 1)->get();
+        $time_zones = TimeZone::where('status', 1)->get();
+        $country_list = DB::table('country_state_district_cities')
+                        ->groupBy('country')
+                        ->where('status', 1)->get();
+        return view('back_end.users_management.users.profile',compact('bloods','time_zones','country_list'));
+
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $id=Auth::user()->id;
+        $this->validate($request, [
+            'name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required',
+            'phone1' => 'required',
+            'blood_id' => 'required',
+            'time_zone_id' => 'required',
+            'city' => 'required',
+            'gender' => 'required',
+
+            'email' => "required|unique:users,name,$id",
+
+        ]);
+
+        $city_id=(DB::table('country_state_district_cities')->where('city', $request->city)->first())->id;
+
+        if ($request->changePassword==1)
+        {
+            $this->validate($request, [
+                'password' => 'required|same:password_confirm',
+            ]);
+        }
+
+
+
+        // if ($request->changePassword==1)
+        //     {
+        //         $input = $request->all();
+        //         if(!empty($input['password'])){
+        //             $input['password'] = Hash::make($input['password']);
+        //         }else{
+        //             $input = Arr::except($input,array('password'));
+        //         }
+        //     }
+
+
+        $user = User::find($id);
+
+
+
+        $user->name = $request->name;
+        $user->last_name = $request->last_name;
+        $user->dob  = $request->dob;
+        $user->phone1  = $request->phone1;
+        $user->phone2  = $request->phone2;
+        $user->blood_id  = $request->blood_id;
+        $user->city_id  = $city_id;
+        $user->time_zone_id  = $request->time_zone_id;
+        // $user->email_verified_at  = $request->email_verified_at;
+        $user->gender  = $request->gender;
+
+        $user->email  = $request->email;
+
+        if ($request->changePassword==1)
+        {
+        $user->password = Hash::make($request['password']);
+        }
+
+
+
+        if ($request->card_footer==0){$user->card_footer==0;}
+        if ($request->card_header==0){$user->card_header==0;}
+        if ($request->sidebar_collapse==0){$user->sidebar_collapse==0;}
+        if ($request->dark_mode==0){$user->dark_mode==0;}
+
+        if (Auth::user()->settings['personal_settings'] == 1)  {$personal_settings=1;}
+        if (Auth::user()->settings['personal_settings'] == null)  {$personal_settings=null;}
+
+        $user->settings= [
+            'personal_settings'=> $personal_settings,
+            'card_footer'=>$request->card_footer,
+            'card_header'=>$request->card_header,
+            'sidebar_collapse'=>$request->sidebar_collapse,
+            'dark_mode'=>$request->dark_mode,
+        ];
+
+
+        $user->updated_by = Auth::user()->id;
+
+        $user->update();
+
+        return redirect()->route('back-end.dashboard')
+                        ->with('message_store', 'User Updated Successfully');
+    }
+
     public function edit($id)
     {
         $bloods = Blood::where('status', 1)->get();
@@ -276,7 +377,7 @@ class UserController extends Controller
         $permissions = Permission::all()->groupBy('parent');
 
 
-        return view('back_end.masters.users.edit',compact('roles','permissions','user','bloods','time_zones','country_list'));
+        return view('back_end.users_management.users.edit',compact('roles','permissions','user','bloods','time_zones','country_list'));
     }
 
     public function update(Request $request, $id)
@@ -292,9 +393,16 @@ class UserController extends Controller
             'gender' => 'required',
 
             'email' => "required|unique:users,name,$id",
-            // 'password' => 'required|same:confirm-password',
+            // 'password' => 'required|same:password_confirm',
             'roles' => 'required'
         ]);
+
+        if ($request->changePassword==1)
+        {
+            $this->validate($request, [
+                'password' => 'required|same:password_confirm',
+            ]);
+        }
 
         $city_id=(DB::table('country_state_district_cities')->where('city', $request->city)->first())->id;
 
@@ -313,15 +421,33 @@ class UserController extends Controller
         $user->gender  = $request->gender;
 
         $user->email  = $request->email;
-        // $user->password = Hash::make($request['password']);
+
+        if ($request->changePassword==1)
+        {
+        $user->password = Hash::make($request['password']);
+        }
 
 
         if ($request->status==0)
             {
                 $user->status==0;
             }
-
         $user->status = $request->status;
+
+
+        if ($request->personal_settings==0){$user->personal_settings==0;}
+        if ($request->card_footer==0){$user->card_footer==0;}
+        if ($request->card_header==0){$user->card_header==0;}
+        if ($request->sidebar_collapse==0){$user->sidebar_collapse==0;}
+        if ($request->dark_mode==0){$user->dark_mode==0;}
+        $user->settings= [
+            'personal_settings'=>$request->personal_settings,
+            'card_footer'=>$request->card_footer,
+            'card_header'=>$request->card_header,
+            'sidebar_collapse'=>$request->sidebar_collapse,
+            'dark_mode'=>$request->dark_mode,
+        ];
+
 
         $user->updated_by = Auth::user()->id;
 
@@ -335,5 +461,12 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
                         ->with('message_store', 'User Updated Successfully');
+    }
+    public function destroy($id)
+    {
+         $user  = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index')
+                        ->with('message_update', 'User Deleted Successfully');
     }
 }

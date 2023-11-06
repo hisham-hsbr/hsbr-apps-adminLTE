@@ -6,7 +6,7 @@
 <!-- ===============================================-->
 <!--    Document Title-->
 <!-- ===============================================-->
-<title>{{ $Application->data['app_name'] }}</title>
+<title>{{ $application->data['app_name'] }}</title>
 
 
 <!-- ===============================================-->
@@ -41,8 +41,8 @@
     rel="stylesheet">
 <link href="{{ asset('front_end_links/phoenix/public/vendors/simplebar/simplebar.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-<link href="{{ asset('front_end_links/phoenix/public/assets/css/theme-rtl.min.css') }}" type="text/css" rel="stylesheet"
-    id="style-rtl">
+<link href="{{ asset('front_end_links/phoenix/public/assets/css/theme-rtl.min.css') }}" type="text/css"
+    rel="stylesheet" id="style-rtl">
 <link href="{{ asset('front_end_links/phoenix/public/assets/css/theme.min.css') }}" type="text/css" rel="stylesheet"
     id="style-default">
 <link href="{{ asset('front_end_links/phoenix/public/assets/css/user-rtl.min.css') }}" type="text/css" rel="stylesheet"

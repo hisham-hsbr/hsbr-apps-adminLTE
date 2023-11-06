@@ -35,14 +35,30 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Sn</th>
-                                        <th>Log Name</th>
-                                        <th>Description</th>
-                                        <th>Event</th>
-                                        <th>Subject Type</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
-                                        <th>View</th>
+                                        @can('Activity Log Table')
+                                            <th>Sn</th>
+                                        @endcan
+                                        @can('Activity Log Read Log Name')
+                                            <th>Log Name</th>
+                                        @endcan
+                                        @can('Activity Log Read Description')
+                                            <th>Description</th>
+                                        @endcan
+                                        @can('Activity Log Read Event')
+                                            <th>Event</th>
+                                        @endcan
+                                        @can('Activity Log Read Subject Type')
+                                            <th>Subject Type</th>
+                                        @endcan
+                                        @can('Activity Log Read Event User')
+                                            <th>Event User</th>
+                                        @endcan
+                                        @can('Activity Log Created At')
+                                            <th>Created At</th>
+                                        @endcan
+                                        @can('Activity Log view')
+                                            <th>View</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,14 +66,30 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Sn</th>
-                                        <th>Log Name</th>
-                                        <th>Description</th>
-                                        <th>Event</th>
-                                        <th>Subject Type</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
-                                        <th>View</th>
+                                        @can('Activity Log Table')
+                                            <th>Sn</th>
+                                        @endcan
+                                        @can('Activity Log Read Log Name')
+                                            <th>Log Name</th>
+                                        @endcan
+                                        @can('Activity Log Read Description')
+                                            <th>Description</th>
+                                        @endcan
+                                        @can('Activity Log Read Event')
+                                            <th>Event</th>
+                                        @endcan
+                                        @can('Activity Log Read Subject Type')
+                                            <th>Subject Type</th>
+                                        @endcan
+                                        @can('Activity Log Read Event User')
+                                            <th>Event User</th>
+                                        @endcan
+                                        @can('Activity Log Created At')
+                                            <th>Created At</th>
+                                        @endcan
+                                        @can('Activity Log view')
+                                            <th>View</th>
+                                        @endcan
                                     </tr>
                                 </tfoot>
                             </table>
@@ -149,46 +181,63 @@
                 serverSide: true,
                 ajax: '{!! route('activityLogs.get') !!}',
 
-                columns: [{
-                        data: 'id',
-                        name: 'id',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'log_name',
-                        name: 'log_name',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'description',
-                        name: 'description',
-                        defaultContent: '',
-                    },
-                    {
-                        data: 'event',
-                        name: 'event',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'subject_type',
-                        name: 'subject_type',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'updated_at',
-                        name: 'updated_at',
-                        defaultContent: ''
-                    },
-                    {
-                        data: 'editLink',
-                        name: 'editLink',
-                        defaultContent: ''
-                    },
+                columns: [
+                    @can('Activity Log Table')
+                        {
+                            data: 'id',
+                            name: 'id',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log Read Log Name')
+                        {
+                            data: 'log_name',
+                            name: 'log_name',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log Read Description')
+                        {
+                            data: 'description',
+                            name: 'description',
+                            defaultContent: '',
+                        },
+                    @endcan
+                    @can('Activity Log Read Event')
+                        {
+                            data: 'event',
+                            name: 'event',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log Read Subject Type')
+                        {
+                            data: 'subject_type',
+                            name: 'subject_type',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log Read Event User')
+                        {
+                            data: 'created_user',
+                            name: 'created_user',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log Created Ate')
+                        {
+                            data: 'created_at',
+                            name: 'created_at',
+                            defaultContent: ''
+                        },
+                    @endcan
+                    @can('Activity Log View')
+                        {
+                            data: 'viewLink',
+                            name: 'editLink',
+                            defaultContent: ''
+                        },
+                    @endcan
                 ]
             });
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');

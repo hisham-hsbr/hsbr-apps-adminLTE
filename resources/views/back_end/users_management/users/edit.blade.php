@@ -4,8 +4,8 @@
 
 @section('PageTitle', 'User Create')
 @section('pageNavHeader')
-    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
     <li class="breadcrumb-item active">Create</li>
 @endsection
 
@@ -130,6 +130,36 @@
                                                 value="{{ $user->email }}" placeholder="Enter email">
                                         </div>
 
+                                        <div class="col-sm-10 p-4">
+                                            <input type="checkbox" class="form-check-input" name="changePassword"
+                                                value="1" id="changePassword" />
+                                            <label class="form-check-label" for="changePassword">Change Password</label>
+                                        </div>
+
+                                        <div class="form-group col-sm-4">
+                                            <label for="password" class="required col-form-label">Password</label>
+                                            <x-form.button button_type="button" button_oneclick="generate()"
+                                                button_class="btn btn-warning btn-xs generate-password"
+                                                button_icon="fa fa-plus" button_name="Generate" />
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                placeholder="Password">
+                                            <div class="form-group-append">
+                                                <button type="button" class="btn btn-outline-secondary show-password"><i
+                                                        class="fa-regular fa-eye-slash"></i></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-4">
+                                            <label for="password_confirm" class="required col-form-label">Confirm
+                                                Password</label>
+                                            <input type="password" name="password_confirm" id="password_confirm"
+                                                class="form-control " placeholder="Confirm Password">
+                                            <div class="form-group-append">
+                                                <button type="button" class="btn btn-outline-secondary show-password"><i
+                                                        class="fa-regular fa-eye-slash"></i></button>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -251,9 +281,70 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
+
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Admin Settings</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3 pl-5 pt-2">
+                                        <input type="checkbox" class="form-check-input" name="personal_settings"
+                                            value="1" id="personal_settings"
+                                            @if ($user->settings['personal_settings'] == 1) {{ 'checked' }} @endif />
+                                        <label class="form-check-label" for="personal_settings">Personal Settings</label>
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="card card-secondary">
+                            <div class="card-header">
+                                <h3 class="card-title">Personal Settings</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3 pl-5 pt-2">
+                                        <input type="checkbox" class="form-check-input" name="card_header" value="1"
+                                            id="card_header" @if ($user->settings['card_header'] == 1) {{ 'checked' }} @endif />
+                                        <label class="form-check-label" for="card_header">Page Card Header</label>
+                                    </div>
+                                    <div class="col-sm-3 pl-5 pt-2">
+                                        <input type="checkbox" class="form-check-input" name="card_footer" value="1"
+                                            id="card_footer" @if ($user->settings['card_footer'] == 1) {{ 'checked' }} @endif />
+                                        <label class="form-check-label" for="card_footer">Page Card Footer</label>
+                                    </div>
+                                    <div class="col-sm-3 pl-5 pt-2">
+                                        <input type="checkbox" class="form-check-input" name="sidebar_collapse"
+                                            value="1" id="sidebar_collapse"
+                                            @if ($user->settings['sidebar_collapse'] == 1) {{ 'checked' }} @endif />
+                                        <label class="form-check-label" for="sidebar_collapse">Sidebar Collapse</label>
+                                    </div>
+                                    <div class="col-sm-3 pl-5 pt-2">
+                                        <input type="checkbox" class="form-check-input" name="dark_mode" value="1"
+                                            id="dark_mode" @if ($user->settings['dark_mode'] == 1) {{ 'checked' }} @endif />
+                                        <label class="form-check-label" for="dark_mode">Dark Mode</label>
+                                    </div>
+
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="form-group mb-0">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
+                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a type="button"
+                                        data-toggle="modal" data-target="#modal-default" href="#">terms of
+                                        service</a>.</label>
+                            </div>
+                        </div>
                         <div class="">
                             @can('User Update')
-                                <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
+                                <button type="submit" id="modal-default"
+                                    class="btn btn-primary float-right ml-1">Update</button>
                             @endcan
                             <a type="button" href="{{ route('roles.index') }}"
                                 class="btn btn-warning float-right ml-1">Back</a>
@@ -288,6 +379,34 @@
             // })
         });
     </script>
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Terms of service</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{-- <p>One fine body&hellip;</p> --}}
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium consequuntur doloremque
+                        expedita quia odit commodi laborum sequi, a porro magnam. Pariatur magni consequatur est laudantium
+                        asperiores ut omnis architecto accusamus.</p>
+                </div>
+                {{-- <div class="modal-footer justify-content-between"> --}}
+                <div class="modal-footer justify-right">
+                    {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">I agree</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <x-script.password-generate />
 
     <x-message.message />
 
@@ -327,10 +446,11 @@
                         required: true,
                         email: true,
                     },
-                    password: {
-                        required: true,
-                        minlength: 5
-                    },
+
+                    if (changePassword == 1) {
+                        'password: {required: true,minlength: 5},'
+                    }
+
                     country: {
                         required: true,
                     },
@@ -381,10 +501,9 @@
                         required: "Please enter a email address",
                         email: "Please enter a valid email address"
                     },
-                    password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
-                    },
+                    if (changePassword == 1) {
+                        'password:{required: "Please provide a password",minlength: "Your password must be at least 5 characters long"},'
+                    }
                     country: {
                         required: "Please Select country",
                     },

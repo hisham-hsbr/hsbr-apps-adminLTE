@@ -32,7 +32,7 @@ class PermissionController extends Controller
         }else{
             $permissions = Permission::where('id','>',2)->get();
         }
-        return view('back_end.spatie.permissions.index',compact('permissions'))->with('i');
+        return view('back_end.users_management.permissions.index',compact('permissions'))->with('i');
     }
 
     public function permissionsGet()
@@ -96,7 +96,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('back_end.spatie.permissions.create');
+        return view('back_end.users_management.permissions.create');
     }
 
     /**
@@ -147,7 +147,7 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission  = Permission::find($id);
-        return view('back_end.spatie.permissions.edit', compact('permission'));
+        return view('back_end.users_management.permissions.edit', compact('permission'));
     }
 
     /**

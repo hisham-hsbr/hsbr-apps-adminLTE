@@ -127,17 +127,19 @@ class PermissionSeeder extends Seeder
         // => Activity Log
         Permission::create(['name' => 'Activity Log Read' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);Permission::create(['name' => 'Activity Log Settings' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Table' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Log View' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
         Permission::create(['name' => 'Activity Log Read Log Name' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Read Description' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Read Event' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Log Read Event User' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Read Subject Type' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Read Causer Type' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
-        Permission::create(['name' => 'Activity Log Read Created By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Read Created At' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Updated By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Updated At' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Log Read Created By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Log Read Updated By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Log Read Updated At' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
         Permission::create(['name' => 'Activity Log Table Export Excel' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Activity Log Table Export PDF' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);

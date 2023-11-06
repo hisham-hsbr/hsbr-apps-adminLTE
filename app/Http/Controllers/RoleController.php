@@ -33,7 +33,7 @@ class RoleController extends Controller
             $roles = Role::where('id','>',1)->get();
         }
 
-        return view('back_end.spatie.roles.index',compact('roles'))->with('i');
+        return view('back_end.users_management.roles.index',compact('roles'))->with('i');
     }
 
     /**
@@ -42,7 +42,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all()->groupBy('parent');
-        return view('back_end.spatie.roles.create',compact('permissions'));
+        return view('back_end.users_management.roles.create',compact('permissions'));
     }
 
     /**
@@ -92,7 +92,7 @@ class RoleController extends Controller
         $role        = Role::find($id);
         $role        = $role->load('permissions');
         $permissions = Permission::all()->groupBy('parent');
-        return view('back_end.spatie.roles.edit', compact('role', 'permissions'));
+        return view('back_end.users_management.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -127,8 +127,13 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+         $role  = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()->route('roles.index')
+                ->with('message_update', 'Role Deleted Successfully');
     }
+
 }

@@ -23,7 +23,7 @@
 @section('actionTitle', 'Activity Log Show')
 @section('mainContent')
     <div class="container-fluid">
-        @can('Activity Logs Read')
+        @can('Activity Log View')
             <div class="row">
                 <div class="col-md-1">
 
@@ -59,7 +59,7 @@
                                             {{ $activityLog->causer_type }}</code></label>
                                 </div>
                                 <div class="col-sm-6">
-                                    <label class="col-sm-4">Updated User</label>
+                                    <label class="col-sm-4">Event User</label>
                                     <label><code>:
                                             {{ $activityLog->activityUser->name }}</code></label>
                                 </div>

@@ -65,6 +65,11 @@ implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'settings'=>'array'
+    ];
+
+    protected $attributes = [
+        'settings' => '{"personal_settings":"1","card_header":1,"card_footer":1,"sidebar_collapse":null,"dark_mode":null,"avatar":1}'
     ];
 
 

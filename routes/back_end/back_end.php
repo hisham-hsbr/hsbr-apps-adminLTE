@@ -7,3 +7,4 @@ Route::get('/admin/dashboard/users', 'BackendDashboardController@fetchUsers')->n
 
 
 require __DIR__.'/default.php';  //default CRUD
+require __DIR__.'/settings.php';  //Settings

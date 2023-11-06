@@ -12,7 +12,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::patch('/update/{id}', 'update')->name('update');
         Route::post('/store', 'store')->name('store');
-        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::delete('/destroy{id}', 'destroy')->name('destroy');
     });
 
     //Permissions
@@ -27,16 +27,19 @@ Route::middleware('auth')->group(function () {
     });
 
     //Users
-    Route::controller('UserController')->prefix('/admin/masters/users')->name('users.')->group(function () {
+    Route::controller('UserController')->prefix('/admin/users-management/users')->name('users.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::patch('/update/{id}', 'update')->name('update');
         Route::post('/store', 'store')->name('store');
-        Route::delete('/destroy', 'destroy')->name('destroy');
+        Route::delete('/destroy{id}', 'destroy')->name('destroy');
         Route::get('/get', 'usersGet')->name('get');
         Route::post('/csdc/get', 'csdcsGet')->name('csdcs.get');
     });
+
+    Route::get('/admin/profile', 'UserController@profileEdit')->name('profile.edit');
+    Route::patch('/admin/profile', 'UserController@profileUpdate')->name('profile.update');
 
     //activity-logs
     Route::controller('ActivitylogController')->prefix('/admin/users-management/activity-logs')->name('activityLogs.')->group(function () {
@@ -56,7 +59,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/get', 'bloodsGet')->name('get');
     });
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
