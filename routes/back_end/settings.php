@@ -12,7 +12,7 @@ Route::middleware('auth')->group(function () {
     });
 
     //App Settings
-    Route::controller('UserSettingsController')->prefix('/admin/settings/user-settings')->name('user-settings.')->group(function () {
+    Route::controller('AdminSettingsController')->prefix('/admin/settings/admin-settings')->name('admin-settings.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::patch('/update', 'update')->name('update');
     });

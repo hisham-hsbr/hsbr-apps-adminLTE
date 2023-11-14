@@ -3,7 +3,7 @@
 
         // generate random password
         function generatePassword() {
-            let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let charset = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789";
             let password = "";
             let length = 6;
 

@@ -1,8 +1,8 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'User Settings')
+@section('PageHead', 'Admin Settings')
 
-@section('PageTitle', 'User Settings')
+@section('PageTitle', 'Admin Settings')
 @section('pageNavHeader')
     <li class="breadcrumb-item active"><a href="/admin/dashboard">Dashboard</a></li>
     {{-- <li class="breadcrumb-item"><a href="/admin/roles">Roles</a></li>
@@ -16,39 +16,51 @@
         href="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
 @endsection
 
-@section('actionTitle', 'User Settings')
+@section('actionTitle', 'Admin Settings')
 @section('mainContent')
     <div class="container-fluid">
-        @can('User Menu')
+        @can('A Menu')
             <div class="row">
 
                 <div class="col-md-12">
-                    <form role="form" action="{{ route('user-settings.update') }}" method="post" id="quickForm"
+                    <form role="form" action="{{ route('admin-settings.update') }}" method="post" id="quickForm"
                         enctype="multipart/form-data" id="quickForm">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <div class="card-body">
                             {{-- App settings --}}
                             <div class="row">
-                                <div class="col-sm-3 pl-5 pt-2">
+                                <div class="col-sm-4 pl-5 pt-2">
                                     <input type="checkbox" class="form-check-input" name="card_header" value="1"
                                         id="card_header" @if ($default_layout->data['card_header'] == 1) {{ 'checked' }} @endif />
-                                    <label class="form-check-label" for="card_header">Page Card Header</label>
+                                    <label class="form-check-label" for="card_header">Page Card Header (Show)</label>
                                 </div>
-                                <div class="col-sm-3 pl-5 pt-2">
+                                <div class="col-sm-4 pl-5 pt-2">
                                     <input type="checkbox" class="form-check-input" name="card_footer" value="1"
                                         id="card_footer" @if ($default_layout->data['card_footer'] == 1) {{ 'checked' }} @endif />
-                                    <label class="form-check-label" for="card_footer">Page Card Footer</label>
+                                    <label class="form-check-label" for="card_footer">Page Card Footer (Show)</label>
                                 </div>
-                                <div class="col-sm-3 pl-5 pt-2">
+                                <div class="col-sm-4 pl-5 pt-2">
                                     <input type="checkbox" class="form-check-input" name="sidebar_collapse" value="1"
                                         id="sidebar_collapse" @if ($default_layout->data['sidebar_collapse'] == 1) {{ 'checked' }} @endif />
-                                    <label class="form-check-label" for="sidebar_collapse">Sidebar Collapse</label>
+                                    <label class="form-check-label" for="sidebar_collapse">Sidebar Collapse (Enable)</label>
                                 </div>
-                                <div class="col-sm-3 pl-5 pt-2">
+                                <div class="col-sm-4 pl-5 pt-2">
                                     <input type="checkbox" class="form-check-input" name="dark_mode" value="1"
                                         id="dark_mode" @if ($default_layout->data['dark_mode'] == 1) {{ 'checked' }} @endif />
-                                    <label class="form-check-label" for="dark_mode">Dark Mode</label>
+                                    <label class="form-check-label" for="dark_mode">Dark Mode (Enable)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="default_status" value="1"
+                                        id="default_status" @if ($default_action->data['default_status'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="default_status">Default Status
+                                        (Active)</label>
+                                </div>
+                                <div class="col-sm-4 pl-5 pt-2">
+                                    <input type="checkbox" class="form-check-input" name="default_time_zone" value="1"
+                                        id="default_time_zone" @if ($default_action->data['default_time_zone'] == 1) {{ 'checked' }} @endif />
+                                    <label class="form-check-label" for="default_time_zone">Default Time Zone
+                                        (Current)</label>
                                 </div>
 
                             </div>

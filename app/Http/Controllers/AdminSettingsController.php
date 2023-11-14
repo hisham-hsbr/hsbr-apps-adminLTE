@@ -6,7 +6,7 @@ use App\Models\AppSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserSettingsController extends Controller
+class AdminSettingsController extends Controller
 {
     public function __construct()
     {
@@ -37,6 +37,9 @@ class UserSettingsController extends Controller
         if ($request->card_header==0){$default_layout->status==0;}
         if ($request->sidebar_collapse==0){$default_layout->status==0;}
         if ($request->dark_mode==0){$default_layout->status==0;}
+        if ($request->default_status==0){$user->default_status==0;}
+        if ($request->default_time_zone==0){$user->default_time_zone==0;}
+
         $default_layout->data= [
             'card_footer'=>$request->card_footer,
             'card_header'=>$request->card_header,
@@ -46,8 +49,19 @@ class UserSettingsController extends Controller
         $default_layout->updated_by = Auth::user()->id;
         $default_layout->save();
 
+        //default layout Settings
+        $default_action = AppSettings::firstWhere('name', 'default action');
+        $default_action->data= [
+            'default_status'=>$request->default_status,
+            'default_time_zone'=>$request->default_time_zone,
+        ];
+        $default_action->updated_by = Auth::user()->id;
+        $default_action->save();
 
-        return redirect()->route('user-settings.index')
+
+        return redirect()->route('admin-settings.index')
                         ->with('message_store', 'Settings Are Updated Successfully');
     }
+
+
 }

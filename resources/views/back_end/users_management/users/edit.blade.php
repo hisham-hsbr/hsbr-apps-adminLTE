@@ -1,8 +1,8 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'User Create')
+@section('PageHead', 'User Edit')
 
-@section('PageTitle', 'User Create')
+@section('PageTitle', 'User Edit')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="{{ route('back-end.dashboard') }}">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
@@ -20,10 +20,18 @@
         href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
-@section('actionTitle', 'User Create')
+@section('actionTitle', 'User Edit')
 @section('mainContent')
     <div class="container-fluid">
         @can('User Menu')
+
+            <div class="row">
+
+                <div class="col-10">
+                    <x-form.button button_type="" button_oneclick="copyToClipboard()" button_class="btn btn-success btn-xs"
+                        button_icon="fa fa-clipboard" button_name=" Copy User Name & Password" />
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-1">
 
@@ -136,6 +144,7 @@
                                             <label class="form-check-label" for="changePassword">Change Password</label>
                                         </div>
 
+
                                         <div class="form-group col-sm-4">
                                             <label for="password" class="required col-form-label">Password</label>
                                             <x-form.button button_type="button" button_oneclick="generate()"
@@ -159,7 +168,6 @@
                                                         class="fa-regular fa-eye-slash"></i></button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -333,14 +341,6 @@
                             </div>
                             <!-- /.card-body -->
                         </div>
-                        <div class="form-group mb-0">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                                <label class="custom-control-label" for="exampleCheck1">I agree to the <a type="button"
-                                        data-toggle="modal" data-target="#modal-default" href="#">terms of
-                                        service</a>.</label>
-                            </div>
-                        </div>
                         <div class="">
                             @can('User Update')
                                 <button type="submit" id="modal-default"
@@ -360,10 +360,35 @@
         @endcan
     </div><!-- /.container-fluid -->
 
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modalsssssss</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
 @endsection
 @section('actionFooter', 'Footer')
 @section('footerLinks')
+
+
+
+
 
     <!-- Select2 -->
     <script src="{{ asset('back_end_links/adminLinks/plugins/select2/js/select2.full.min.js') }}"></script>
@@ -380,32 +405,7 @@
         });
     </script>
 
-    <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Terms of service</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{-- <p>One fine body&hellip;</p> --}}
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium consequuntur doloremque
-                        expedita quia odit commodi laborum sequi, a porro magnam. Pariatur magni consequatur est laudantium
-                        asperiores ut omnis architecto accusamus.</p>
-                </div>
-                {{-- <div class="modal-footer justify-content-between"> --}}
-                <div class="modal-footer justify-right">
-                    {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">I agree</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
+    <x-script.password-and-username-copy-to-clipboard />
     <x-script.password-generate />
 
     <x-message.message />
@@ -633,8 +633,6 @@
 
         });
     </script>
-
-
 
 
 @endsection

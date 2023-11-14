@@ -22,5 +22,12 @@ class AppSettingsSeeder extends Seeder
                 'dark_mode'=>null,
             ],
             'description' => 'app des' ,'parent'=>'layout', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        AppSettings::create([
+            'name' => 'default action' ,
+            'data'=>[
+                'default_status'=>1,
+                'default_time_zone'=>1,
+            ],
+            'description' => 'app des' ,'parent'=>'layout', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
     }
 }

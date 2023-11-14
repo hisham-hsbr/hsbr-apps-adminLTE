@@ -50,27 +50,21 @@
                     active="{{ request()->is('admin/profile') ? 'active' : '' }}" menu_icon="fa fa-user" drop_icon="" />
             @endcan {{-- profile Menu End --}}
             {{-- @can('Admin Section Menu') --}}
-            @canany(['User Read', 'Developer Settings Read', 'Permission Read'])
+            @canany(['Developer Settings Read'])
                 <x-sidebar.sidebar-nav-header head="Developer Section" />
 
                 {{-- Masters Menu Start --}}
                 @canany(['Developer Settings Read'])
                     <x-sidebar.sidebar-nav-level head="Developer Settings" href="#"
-                        menu_open="{{ request()->is('admin/settings*') ? 'menu-open' : '' }}{{ request()->is('developer/settings*') ? 'menu-open' : '' }}"
-                        active="{{ request()->is('admin/settings/*') ? 'active' : '' }} {{ request()->is('developer/settings/*') ? 'active' : '' }}"
+                        menu_open="{{ request()->is('developer/settings*') ? 'menu-open' : '' }}"
+                        active="{{ request()->is('developer/settings/*') ? 'active' : '' }} {{ request()->is('developer/settings/*') ? 'active' : '' }}"
                         menu_icon="fa fa-cogs" drop_icon="fas fa-angle-left">
                         {{-- App Settings Menu Start --}}
                         @can('App Settings Read')
                             <x-sidebar.sidebar-nav-multi-level head="App Settings" href="{{ route('app-settings.index') }}"
                                 menu_open="" active="{{ request()->is('developer/settings/app-settings*') ? 'active' : '' }}"
                                 menu_icon="fa fa-wrench" drop_icon="" />
-                        @endcan {{-- Blood Menu End --}}
-                        {{-- Page Settings Menu Start --}}
-                        @can('Page Settings Read')
-                            <x-sidebar.sidebar-nav-multi-level head="User Settings" href="{{ route('user-settings.index') }}"
-                                menu_open="" active="{{ request()->is('admin/settings*') ? 'active' : '' }}"
-                                menu_icon="fa fa-cog" drop_icon="" />
-                        @endcan {{-- Blood Menu End --}}
+                        @endcan {{-- App Settings Menu End --}}
                         {{-- Developer Settings Menu Start --}}
                         @can('Developer Settings Read')
                             <x-sidebar.sidebar-nav-multi-level head="Developer Settings" href="{{ route('bloods.index') }}"
@@ -82,7 +76,7 @@
 
             @endcanany {{-- Masters Menu End --}}
             {{-- @can('Admin Section Menu') --}}
-            @canany(['User Read', 'Blood Read', 'Permission Read'])
+            @canany(['Admin Settings', 'User Settings', 'User Read', 'Blood Read', 'Permission Read'])
                 <x-sidebar.sidebar-nav-header head="Admin Section" />
 
 
@@ -100,6 +94,21 @@
                         @endcan {{-- Blood Menu End --}}
                     </x-sidebar.sidebar-nav-level>
                 @endcanany {{-- Masters Menu End --}}
+
+                {{-- settings Menu Start --}}
+                @canany(['Admin Settings', 'User Settings'])
+                    <x-sidebar.sidebar-nav-level head="Settings" href="#"
+                        menu_open="{{ request()->is('admin/settings*') ? 'menu-open' : '' }}"
+                        active="{{ request()->is('admin/settings/*') ? 'active' : '' }}" menu_icon="fa fa-cogs"
+                        drop_icon="fas fa-angle-left">
+                        {{-- Blood Menu Start --}}
+                        @can('Blood Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Admin Settings" href="{{ route('admin-settings.index') }}"
+                                menu_open="" active="{{ request()->is('admin/settings/admin-settings*') ? 'active' : '' }}"
+                                menu_icon="fa fa-wrench" drop_icon="" />
+                        @endcan {{-- Blood Menu End --}}
+                    </x-sidebar.sidebar-nav-level>
+                @endcanany {{-- settings Menu End --}}
 
 
                 {{-- Users Management Start --}}
@@ -123,7 +132,8 @@
                         {{-- Permission Menu --}}
                         @can('Permission Read')
                             <x-sidebar.sidebar-nav-multi-level head="Permission" href="{{ route('permissions.index') }}"
-                                menu_open="" active="{{ request()->is('admin/users-management/permissions*') ? 'active' : '' }}"
+                                menu_open=""
+                                active="{{ request()->is('admin/users-management/permissions*') ? 'active' : '' }}"
                                 menu_icon="fa fa-lock" drop_icon="" />
                         @endcan {{-- Permission Menu End --}}
                         {{-- Menu Activity Logs --}}

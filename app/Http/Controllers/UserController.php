@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
@@ -337,6 +338,8 @@ class UserController extends Controller
         if ($request->card_header==0){$user->card_header==0;}
         if ($request->sidebar_collapse==0){$user->sidebar_collapse==0;}
         if ($request->dark_mode==0){$user->dark_mode==0;}
+        if ($request->default_status==0){$user->default_status==0;}
+        if ($request->default_time_zone==0){$user->default_time_zone==0;}
 
         if (Auth::user()->settings['personal_settings'] == 1)  {$personal_settings=1;}
         if (Auth::user()->settings['personal_settings'] == null)  {$personal_settings=null;}
@@ -347,6 +350,8 @@ class UserController extends Controller
             'card_header'=>$request->card_header,
             'sidebar_collapse'=>$request->sidebar_collapse,
             'dark_mode'=>$request->dark_mode,
+            'default_status'=>$request->default_status,
+            'default_time_zone'=>$request->default_time_zone,
         ];
 
 
@@ -354,7 +359,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('back-end.dashboard')
+        return redirect()->route('back-end.users_management.users.profile')
                         ->with('message_store', 'User Updated Successfully');
     }
 
@@ -440,12 +445,16 @@ class UserController extends Controller
         if ($request->card_header==0){$user->card_header==0;}
         if ($request->sidebar_collapse==0){$user->sidebar_collapse==0;}
         if ($request->dark_mode==0){$user->dark_mode==0;}
+        if ($request->default_status==0){$user->default_status==0;}
+        if ($request->default_time_zone==0){$user->default_time_zone==0;}
         $user->settings= [
             'personal_settings'=>$request->personal_settings,
             'card_footer'=>$request->card_footer,
             'card_header'=>$request->card_header,
             'sidebar_collapse'=>$request->sidebar_collapse,
             'dark_mode'=>$request->dark_mode,
+            'default_status'=>$request->default_status,
+            'default_time_zone'=>$request->default_time_zone,
         ];
 
 
@@ -468,5 +477,38 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')
                         ->with('message_update', 'User Deleted Successfully');
+    }
+
+    public function avatarUpdate(request $request)
+    {
+        if($oldAvatar = $request->user()->avatar){
+            Storage::disk('public')->delete($oldAvatar);
+        }
+        $file_name=Auth::user()->email;
+
+        $path = Storage::disk('public')->put('images/avatars',$request->file('avatar'));
+        $id=Auth::user()->id;
+        $user  = User::findOrFail($id);
+        $user->avatar=$path;
+        $user->update();
+
+
+        return Redirect::route('profile.edit')->with('status', 'profile-avatar-updated');
+    }
+
+    public function avatarDelete(request $request)
+    {
+        $old_avatar = $request->user()->avatar;
+
+        // dd($old_avatar);
+        Storage::disk('public')->delete($old_avatar);
+
+        $path = "";
+        $id=Auth::user()->id;
+        $user  = User::findOrFail($id);
+        $user->avatar=$path;
+        $user->update();
+
+        return Redirect()->back()->with('message_update', 'Profile Avatar Deleted');
     }
 }

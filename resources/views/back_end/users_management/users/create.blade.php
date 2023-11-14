@@ -10,14 +10,7 @@
 @endsection
 
 @section('headLinks')
-    <!-- Bootstrap4 Duallistbox -->
-    <link rel="stylesheet"
-        href="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('back_end_links/adminLinks/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <x-links.header-link-dual-list-box />
 @endsection
 
 @section('actionTitle', 'User Create')
@@ -25,6 +18,10 @@
     <div class="container-fluid">
 
         <div class="row">
+            <div class="col-10">
+                <x-form.button button_type="" button_oneclick="copyToClipboard()" button_class="btn btn-success btn-xs"
+                    button_icon="fa fa-clipboard" button_name=" Copy User Name & Password" />
+            </div>
             <div class="col-md-1">
 
             </div>
@@ -37,37 +34,33 @@
                         <div class="card-body">
                             <!-- /.card-header -->
                             <div class="row">
-                                <div class="form-group col-sm-4">
-                                    <label for="name" class="required col-form-label">First
-                                        Name</label>
-                                    <input type="text" name="name" id="name" class="form-control"
-                                        value="{{ old('name') }}" placeholder="First Name">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="last_name" class="required col-form-label">Last
-                                        Name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control"
-                                        value="{{ old('last_name') }}" placeholder="Last Name">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="dob" class="required col-form-label">Date of
-                                        Birth</label>
-                                    <input type="date" name="dob" id="dob" class="form-control"
-                                        value="{{ old('dob') }}" placeholder="Enter birth date">
-                                </div>
+                                <x-form.form-group-label-input div_class="col-sm-4" label_for="name"
+                                    lable_class="required col-form-label" label_name="First Name" input_type="text"
+                                    input_name="name" input_id="name" input_style="" input_class=""
+                                    input_value="{{ old('name') }}" input_placeholder="First Name" />
 
-                                <div class="form-group col-sm-4">
-                                    <label for="phone1" class="required col-form-label">Phone
-                                        Number 1</label>
-                                    <input type="number" name="phone1" id="phone1" class="form-control"
-                                        value="{{ old('phone1') }}" placeholder="Phone Number 1">
-                                </div>
-                                <div class="form-group col-sm-4">
-                                    <label for="phone2" class="col-form-label">Phone
-                                        Number 2</label>
-                                    <input type="number" name="phone2" class="form-control" value="{{ old('phone2') }}"
-                                        placeholder="Phone Number 2">
-                                </div>
+                                <x-form.form-group-label-input div_class="col-sm-4" label_for="last_name"
+                                    lable_class="required col-form-label" label_name="Last Name" input_type="text"
+                                    input_name="last_name" input_id="last_name" input_style="" input_class=""
+                                    input_value="{{ old('last_name') }}" input_placeholder="Last Name" />
+
+                                <x-form.form-group-label-input div_class="col-sm-4" label_for="dob"
+                                    lable_class="required col-form-label" label_name="Date Of Birth" input_type="date"
+                                    input_name="dob" input_id="dob" input_style="" input_class=""
+                                    input_value="{{ old('dob') }}" input_placeholder="Date Of Birth" />
+
+                                <x-form.form-group-label-input div_class="col-sm-4" label_for="phone1"
+                                    lable_class="required col-form-label" label_name="Phone Number 1" input_type="number"
+                                    input_name="phone1" input_id="phone1" input_style="" input_class=""
+                                    input_value="{{ old('phone1') }}" input_placeholder="Phone Number 1" />
+
+                                <x-form.form-group-label-input div_class="col-sm-4" label_for="phone2"
+                                    lable_class="required col-form-label" label_name="Phone Number 2" input_type="number"
+                                    input_name="phone2" input_id="phone2" input_style="" input_class=""
+                                    input_value="{{ old('phone2') }}" input_placeholder="Phone Number 2" />
+
+
+
                                 <div class="form-group col-sm-4">
                                     <label for="blood_id" class="required col-form-label">Blood
                                         Group</label>
@@ -99,13 +92,11 @@
                                     <select name="time_zone_id" id="time_zone_id" class="form-control select2">
                                         <option disabled selected>--Time Zone--</option>
                                         @foreach ($time_zones as $time_zone)
-                                            <option {{ Auth::user()->time_zone_id == $time_zone->id ? 'selected' : '' }}
-                                                value="{{ $time_zone->id }}">{{ $time_zone->time_zone }} -- (
-                                                {{ $time_zone->utc_code }}{{ ' ' }}{{ $time_zone->country }})
-                                                {{-- <option {{  old('time_zone_id') == $time_zone->id ? 'selected' : ''}}
-                                    value="{{ $time_zone->id }}">{{ $time_zone->time_zone }} -- (
-                                    {{ $time_zone->utc_code }}{{ ' ' }}{{ $time_zone->country }}) --}}
-                                            </option>
+                                            <option
+                                                @if (Auth::user()->settings['default_time_zone'] == 1) {{ Auth::user()->time_zone_id == $time_zone->id ? 'selected' : '' }} @endif
+                                                value="{{ $time_zone->id }}">
+                                                {{ $time_zone->time_zone }} --
+                                                ({{ $time_zone->utc_code }}{{ ' ' }}{{ $time_zone->country }})
                                         @endforeach
                                     </select>
                                 </div>
@@ -245,7 +236,7 @@
 
                             <div class="col-sm-10 pl-5 pt-2">
                                 <input type="checkbox" class="form-check-input" name="status" value="1"
-                                    id="status" />
+                                    id="status" @if (Auth::user()->settings['default_status'] == 1) {{ 'checked' }} @endif />
                                 <label class="form-check-label" for="status">Active</label>
                             </div>
                         </div>
@@ -274,34 +265,19 @@
 @section('actionFooter', 'Footer')
 @section('footerLinks')
 
-    <!-- Select2 -->
-    <script src="{{ asset('back_end_links/adminLinks/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script>
-        $(function() {
 
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-            // //Initialize Select2 Elements
-            // $('.select2bs4').select2({
-            //     theme: 'bootstrap4'
-            // })
-        });
-    </script>
-
+    <x-script.password-and-username-copy-to-clipboard />
     <x-script.password-generate />
+    <x-script.dual-list-box />
+    <x-script.dependent-dropdown-zip-code />
 
     <x-message.message />
 
     <x-links.footer-link-jquery-validation />
 
+    {{-- jquery-validation --}}
     <script>
         $(function() {
-            // $.validator.setDefaults({
-            //     submitHandler: function() {
-            //         alert("Form successful submitted!");
-            //     }
-            // });
             $('#quickForm').validate({
                 rules: {
                     name: {
@@ -424,71 +400,6 @@
 
 
 
-
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-
-    <!-- Bootstrap4 Duallistbox -->
-    <script
-        src="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">
-    </script>
-    <script>
-        $(function() {
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
-        })
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('.dynamic').change(function() {
-                if ($(this).val() != '') {
-                    var select = $(this).attr("id");
-                    var value = $(this).val();
-                    var dependent = $(this).data('dependent');
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{ route('users.csdcs.get') }}",
-                        method: "POST",
-                        data: {
-                            select: select,
-                            value: value,
-                            _token: _token,
-                            dependent: dependent
-                        },
-                        success: function(result) {
-                            $('#' + dependent).html(result);
-                        }
-
-                    })
-                }
-            });
-
-            $('#country').change(function() {
-                $('#state').val('');
-                $('#district').val('');
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#state').change(function() {
-                $('#district').val('');
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#district').change(function() {
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#district').change(function() {
-                $('#zip_code').val('');
-            });
-
-
-        });
-    </script>
 
 
 

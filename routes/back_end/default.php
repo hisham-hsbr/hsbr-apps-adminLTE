@@ -38,8 +38,18 @@ Route::middleware('auth')->group(function () {
         Route::post('/csdc/get', 'csdcsGet')->name('csdcs.get');
     });
 
+    //Profile
+    Route::controller('UserController')->prefix('/admin/profile')->name('profile.')->group(function () {
+        Route::get('/', 'profileEdit')->name('edit');
+        Route::patch('/', 'profileUpdate')->name('update');
+        Route::delete('/', 'profileDestroy')->name('destroy');
+        Route::patch('/avatar-update', 'avatarUpdate')->name('avatar-update');
+        Route::patch('/avatar-delete', 'avatarDelete')->name('avatar-delete');
+    });
+
     Route::get('/admin/profile', 'UserController@profileEdit')->name('profile.edit');
     Route::patch('/admin/profile', 'UserController@profileUpdate')->name('profile.update');
+    Route::delete('/admin/profile', 'UserController@profileDestroy')->name('profile.destroy');
 
     //activity-logs
     Route::controller('ActivitylogController')->prefix('/admin/users-management/activity-logs')->name('activityLogs.')->group(function () {

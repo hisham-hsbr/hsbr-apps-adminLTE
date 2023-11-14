@@ -69,7 +69,7 @@ implements MustVerifyEmail
     ];
 
     protected $attributes = [
-        'settings' => '{"personal_settings":"1","card_header":1,"card_footer":1,"sidebar_collapse":null,"dark_mode":null,"avatar":1}'
+        'settings' => '{"personal_settings":"1","card_header":1,"card_footer":1, "sidebar_collapse":null,"dark_mode":null,"default_status":1,"default_time_zone":1}'
     ];
 
 

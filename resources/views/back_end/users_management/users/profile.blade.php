@@ -29,6 +29,45 @@
 
                 </div>
                 <!-- left column -->
+
+
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Personal Avatar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @if (Auth::user()->avatar)
+                                <x-user.user-profile-image class="user-image img-circle elevation-2" width="135" />
+                                <form method="post" action="{{ route('profile.avatar-delete') }}">
+                                    @csrf
+                                    @method('patch')
+                                    <button class="btn btn-secondary btn-sm me-1 mb-1 mt-1">Remove</button>
+                                </form>
+                            @else
+                                <x-user.user-profile-image class="user-image img-circle elevation-2" width="135" />
+                                {{-- <img width="70" height="70" class="rounded-circle"
+                                            src="{{ '/storage/avatars/avatar.png' }}" alt="user avatar"> --}}
+                            @endif
+                            <form method="post" action="{{ route('profile.avatar-update') }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="col-12 mb-3">
+
+                                    <label class="form-label" for="customFile">Select your Avatar</label>
+
+                                    <input class="form-control" id="avatar" name="avatar" type="file" required autofocus
+                                        autocomplete="avatar" />
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
                 <div class="col-md-10">
                     <form role="form" action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data"
                         id="quickForm">
@@ -229,39 +268,61 @@
                             <!-- /.card-body -->
                         </div>
 
-                        <div class="card card-secondary">
-                            <div class="card-header">
-                                <h3 class="card-title">Personal Settings</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3 pl-5 pt-2">
-                                        <input type="checkbox" class="form-check-input" name="card_header" value="1"
-                                            id="card_header" @if (Auth::user()->settings['card_header'] == 1) {{ 'checked' }} @endif />
-                                        <label class="form-check-label" for="card_header">Page Card Header</label>
-                                    </div>
-                                    <div class="col-sm-3 pl-5 pt-2">
-                                        <input type="checkbox" class="form-check-input" name="card_footer" value="1"
-                                            id="card_footer" @if (Auth::user()->settings['card_footer'] == 1) {{ 'checked' }} @endif />
-                                        <label class="form-check-label" for="card_footer">Page Card Footer</label>
-                                    </div>
-                                    <div class="col-sm-3 pl-5 pt-2">
-                                        <input type="checkbox" class="form-check-input" name="sidebar_collapse"
-                                            value="1" id="sidebar_collapse"
-                                            @if (Auth::user()->settings['sidebar_collapse'] == 1) {{ 'checked' }} @endif />
-                                        <label class="form-check-label" for="sidebar_collapse">Sidebar Collapse</label>
-                                    </div>
-                                    <div class="col-sm-3 pl-5 pt-2">
-                                        <input type="checkbox" class="form-check-input" name="dark_mode" value="1"
-                                            id="dark_mode" @if (Auth::user()->settings['dark_mode'] == 1) {{ 'checked' }} @endif />
-                                        <label class="form-check-label" for="dark_mode">Dark Mode</label>
-                                    </div>
+                        @if (Auth::user()->settings['personal_settings'] == 1)
+                            <div class="card card-secondary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Personal Settings</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4 pl-5 pt-2">
+                                            <input type="checkbox" class="form-check-input" name="card_header"
+                                                value="1" id="card_header"
+                                                @if (Auth::user()->settings['card_header'] == 1) {{ 'checked' }} @endif />
+                                            <label class="form-check-label" for="card_header">Page Card Header (Show)</label>
+                                        </div>
+                                        <div class="col-sm-4 pl-5 pt-2">
+                                            <input type="checkbox" class="form-check-input" name="card_footer"
+                                                value="1" id="card_footer"
+                                                @if (Auth::user()->settings['card_footer'] == 1) {{ 'checked' }} @endif />
+                                            <label class="form-check-label" for="card_footer">Page Card Footer (Show)</label>
+                                        </div>
+                                        <div class="col-sm-4 pl-5 pt-2">
+                                            <input type="checkbox" class="form-check-input" name="sidebar_collapse"
+                                                value="1" id="sidebar_collapse"
+                                                @if (Auth::user()->settings['sidebar_collapse'] == 1) {{ 'checked' }} @endif />
+                                            <label class="form-check-label" for="sidebar_collapse">Sidebar Collapse
+                                                (Enable)</label>
+                                        </div>
+                                        <div class="col-sm-4 pl-5 pt-2">
+                                            <input type="checkbox" class="form-check-input" name="dark_mode" value="1"
+                                                id="dark_mode" @if (Auth::user()->settings['dark_mode'] == 1) {{ 'checked' }} @endif />
+                                            <label class="form-check-label" for="dark_mode">Dark Mode (Enable)</label>
+                                        </div>
+                                        <div class="col-sm-4 pl-5 pt-2">
+                                            <input type="checkbox" class="form-check-input" name="default_status"
+                                                value="1" id="default_status"
+                                                @if (Auth::user()->settings['default_status'] == 1) {{ 'checked' }} @endif />
+                                            <label class="form-check-label" for="default_status">Default Status
+                                                (Active)</label>
+                                        </div>
+                                        @can('User Create')
+                                            <div class="col-sm-4 pl-5 pt-2">
+                                                <input type="checkbox" class="form-check-input" name="default_time_zone"
+                                                    value="1" id="default_time_zone"
+                                                    @if (Auth::user()->settings['default_time_zone'] == 1) {{ 'checked' }} @endif />
+                                                <label class="form-check-label" for="default_time_zone">Default Time Zone
+                                                    (Current)</label>
+                                            </div>
+                                        @endcan
 
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
                                 <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
-                        </div>
+                        @endif
+
 
                         <div class="">
                             @can('Profile Update')
@@ -286,56 +347,10 @@
 @section('actionFooter', 'Footer')
 @section('footerLinks')
 
-    <!-- Select2 -->
-    <script src="{{ asset('back_end_links/adminLinks/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script>
-        $(function() {
 
-            //Initialize Select2 Elements
-            $('.select2').select2()
 
-            // //Initialize Select2 Elements
-            // $('.select2bs4').select2({
-            //     theme: 'bootstrap4'
-            // })
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-
-            // generate random password
-            function generatePassword() {
-                let charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                let password = "";
-                let length = 6;
-
-                for (let i = 0; i < length; i++) {
-                    password += charset.charAt(Math.floor(Math.random() * charset.length));
-                }
-                return password;
-            }
-
-            // set password to input fiels
-            $('.generate-password').on('click', function() {
-                let password = generatePassword();
-
-                $('#password').val(password);
-                $('#password_confirm').val(password);
-            });
-
-            // show/hide password
-            $('.show-password').on('click', function() {
-
-                let passwordInput = $(this).closest('.form-group').find('input');
-                let passwordFieldType = passwordInput.attr('type');
-                let newPasswordFieldType = passwordFieldType == 'password' ? 'text' : 'password';
-                passwordInput.attr('type', newPasswordFieldType);
-                $(this).html(newPasswordFieldType == 'password' ?
-                    '<i class="fa-regular fa-eye-slash"></i>' : '<i class="fa-regular fa-eye"></i>');
-            });
-        });
-    </script>
+    <x-script.password-and-username-copy-to-clipboard />
+    <x-script.password-generate />
 
     <x-message.message />
 
@@ -455,70 +470,6 @@
         });
     </script>
 
-    <script src="jquery.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-
-    <!-- Bootstrap4 Duallistbox -->
-    <script
-        src="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">
-    </script>
-    <script>
-        $(function() {
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox()
-        })
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            $('.dynamic').change(function() {
-                if ($(this).val() != '') {
-                    var select = $(this).attr("id");
-                    var value = $(this).val();
-                    var dependent = $(this).data('dependent');
-                    var _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url: "{{ route('users.csdcs.get') }}",
-                        method: "POST",
-                        data: {
-                            select: select,
-                            value: value,
-                            _token: _token,
-                            dependent: dependent
-                        },
-                        success: function(result) {
-                            $('#' + dependent).html(result);
-                        }
-
-                    })
-                }
-            });
-
-            $('#country').change(function() {
-                $('#state').val('');
-                $('#district').val('');
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#state').change(function() {
-                $('#district').val('');
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#district').change(function() {
-                $('#city').val('');
-                $('#zip_code').val('');
-            });
-
-            $('#district').change(function() {
-                $('#zip_code').val('');
-            });
-
-
-        });
-    </script>
 
 
 
