@@ -77,7 +77,16 @@
 
             @endcanany {{-- Masters Menu End --}}
             {{-- @can('Admin Section Menu') --}}
-            @canany(['Admin Settings', 'User Settings', 'User Read', 'Blood Read', 'Permission Read'])
+            @canany([
+                'Admin Settings',
+                'User Settings',
+                'User Read',
+                'Price List Read',
+                'Blood Read',
+                'Permission Read',
+                'Price List
+                Read',
+                ])
                 <x-sidebar.sidebar-nav-header head="Admin Section" />
 
 
@@ -110,6 +119,21 @@
                         @endcan {{-- Blood Menu End --}}
                     </x-sidebar.sidebar-nav-level>
                 @endcanany {{-- settings Menu End --}}
+
+                {{-- price-lists Menu Start --}}
+                @canany(['Price List Read'])
+                    <x-sidebar.sidebar-nav-level head="Thaya" href="#"
+                        menu_open="{{ request()->is('admin/price-lists*') ? 'menu-open' : '' }}"
+                        active="{{ request()->is('admin/price-lists*') ? 'active' : '' }}" menu_icon="fa fa-folder-open"
+                        drop_icon="fas fa-angle-left">
+                        {{-- Blood Menu Start --}}
+                        @can('Price List Read')
+                            <x-sidebar.sidebar-nav-multi-level head="Price Lists" href="{{ route('price-lists.index') }}"
+                                menu_open="" active="{{ request()->is('admin/price-lists*') ? 'active' : '' }}"
+                                menu_icon="fa fa-money" drop_icon="" />
+                        @endcan {{-- Blood Menu End --}}
+                    </x-sidebar.sidebar-nav-level>
+                @endcanany {{-- price-lists Menu End --}}
 
 
                 {{-- Users Management Start --}}
