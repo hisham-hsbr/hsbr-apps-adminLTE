@@ -30,15 +30,15 @@
                             @csrf
                             {{ csrf_field() }}
 
-                            <label class="form-label">Select an Excel File :</label>
+                            <label class="form-label">Select a Price List Excel File :</label>
 
                             <input class="" id="data" name="data" type="file" required autofocus
                                 autocomplete="data" />
 
                             <br>
                             <br>
-                            Download <a href="{{ route('price-lists.download') }}"><i class="fa fa-file-excel"></i> Sample
-                                Excel</a> for Import
+                            Download <a href="{{ route('price-lists.download') }}"><i class="fa fa-file-excel"></i> Sample Price
+                                List Excel</a> for Import
                     </div>
 
 

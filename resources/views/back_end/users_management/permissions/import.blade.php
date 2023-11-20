@@ -30,7 +30,7 @@
                             @csrf
                             {{ csrf_field() }}
 
-                            <label class="form-label">Select an Excel File :</label>
+                            <label class="form-label">Select a Permissions Excel File :</label>
 
                             <input class="" id="data" name="data" type="file" required autofocus
                                 autocomplete="data" />
@@ -38,7 +38,7 @@
                             <br>
                             <br>
                             Download <a href="{{ route('permissions.download') }}"><i class="fa fa-file-excel"></i> Sample
-                                Excel</a> for Import
+                                Permissions Excel</a> for Import
                     </div>
 
 

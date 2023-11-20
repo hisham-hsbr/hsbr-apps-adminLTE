@@ -11,9 +11,20 @@ class PriceList extends Model
 {
     use HasFactory;
 
-     protected $fillable = [
-        'name',
-        'status'
+    protected $fillable = [
+    'code',
+    'name',
+    'group',
+    'packing',
+    'uom',
+    'packet_price',
+    'half_packet_price',
+    'cash_price',
+    'credit_price',
+    'description',
+    'status',
+    'created_by',
+    'updated_by',
     ];
 
     public function getCreatedAtAttribute()
