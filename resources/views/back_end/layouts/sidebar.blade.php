@@ -67,8 +67,9 @@
                         @endcan {{-- App Settings Menu End --}}
                         {{-- Developer Settings Menu Start --}}
                         @can('Developer Settings Read')
-                            <x-sidebar.sidebar-nav-multi-level head="Developer Settings" href="{{ route('bloods.index') }}"
-                                menu_open="" active="{{ request()->is('developer/bloods*') ? 'active' : '' }}"
+                            <x-sidebar.sidebar-nav-multi-level head="Developer Settings"
+                                href="{{ route('developer-settings.index') }}" menu_open=""
+                                active="{{ request()->is('developer/settings/developer-settings*') ? 'active' : '' }}"
                                 menu_icon="fa fa-wrench" drop_icon="" />
                         @endcan {{-- Blood Menu End --}}
                     </x-sidebar.sidebar-nav-level>

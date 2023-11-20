@@ -18,7 +18,7 @@ class DeveloperSettingsController extends Controller
 
     }
 
-    public function index()
+    public function appIndex()
     {
         $application = DeveloperSettings::firstWhere('name', 'application');
         $page = DeveloperSettings::firstWhere('name', 'page');
@@ -27,42 +27,7 @@ class DeveloperSettingsController extends Controller
         return view('back_end.settings.app_settings',compact('application','page','developer'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(DeveloperSettings $developerSettings)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DeveloperSettings $developerSettings)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
+    public function appUpdate(Request $request)
     {
 
         $this->validate($request, [
@@ -113,11 +78,12 @@ class DeveloperSettingsController extends Controller
                         ->with('message_store', 'Settings Are Updated Successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DeveloperSettings $developerSettings)
+    public function developerIndex()
     {
-        //
+        $application = DeveloperSettings::firstWhere('name', 'application');
+        $page = DeveloperSettings::firstWhere('name', 'page');
+        $developer = DeveloperSettings::firstWhere('name', 'developer');
+
+        return view('back_end.settings.developer_settings',compact('application','page','developer'));
     }
 }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
+use App\Imports\PermissionsImport;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PermissionController extends Controller
 {
@@ -99,9 +101,30 @@ class PermissionController extends Controller
         return view('back_end.users_management.permissions.create');
     }
 
+    public function permissionsImport()
+    {
+        return view('back_end.users_management.permissions.import');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
+
+
+    public function permissionsDownload()
+    {
+        $path=public_path('downloads/sample_excels/permissions_import_sample.xlsx');
+        return response()->download($path);
+    }
+
+    public function permissionsUpload(Request $request)
+    {
+        // dd($request->all());
+        Excel::import(new PermissionsImport,$request->file('data'));
+        return redirect()->route('permissions.index')
+        ->with('message_store', 'Permission Import Successfully');
+    }
+
     public function store(Request $request)
     {
 

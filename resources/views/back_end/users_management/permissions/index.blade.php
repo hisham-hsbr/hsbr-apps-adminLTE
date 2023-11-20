@@ -25,16 +25,22 @@
                             @can('Permission Read')
                                 <x-layouts.div-clearfix>
                                     @can('Permission Create')
-                                        <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-primary"
+                                        <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-primary btn-sm"
                                             href="{{ route('permissions.create') }}" button_icon="fa fa-add" button_name="Add" />
                                     @endcan {{-- Permission Create End --}}
+                                    @can('Permission Import')
+                                        <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-warning btn-sm"
+                                            href="{{ route('permissions.import') }}" button_icon="fa fa-upload"
+                                            button_name="Import" />
+                                    @endcan {{-- Permission Create End --}}
                                     @can('Permission Settings')
-                                        <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default"
+                                        <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default btn-sm"
                                             href="" button_icon="fa fa-cog" button_name="Settings" />
                                     @endcan {{-- Permission Settings End --}}
                                     @can('Permission Table')
-                                        <x-form.button button_type="" button_oneclick="Refresh()" button_class="btn btn-success"
-                                            button_icon="fa fa-refresh" button_name="Refresh" />
+                                        <x-form.button button_type="" button_oneclick="Refresh()"
+                                            button_class="btn btn-success btn-sm" button_icon="fa fa-refresh"
+                                            button_name="Refresh" />
                                     @endcan {{-- Permission Table --}}
                                 </x-layouts.div-clearfix>
                                 @can('Permission Table')

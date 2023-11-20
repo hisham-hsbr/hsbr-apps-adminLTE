@@ -18,7 +18,7 @@ class AdminSettingsController extends Controller
     {
         $default_layout = AppSettings::firstWhere('name', 'default layout');
 
-        return view('back_end.settings.settings',compact('default_layout'));
+        return view('back_end.settings.admin_settings',compact('default_layout'));
     }
 
 

@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/store', 'store')->name('store');
         Route::delete('/destroy{id}', 'destroy')->name('destroy');
         Route::get('/get', 'permissionsGet')->name('get');
+        Route::get('/import', 'permissionsImport')->name('import');
+        Route::post('/upload', 'permissionsUpload')->name('upload');
+        Route::get('/download', 'permissionsDownload')->name('download');
     });
 
     //Users

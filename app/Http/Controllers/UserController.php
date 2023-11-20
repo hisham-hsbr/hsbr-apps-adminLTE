@@ -359,7 +359,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('back-end.users_management.users.profile')
+        return redirect()->route('profile.edit')
                         ->with('message_store', 'User Updated Successfully');
     }
 

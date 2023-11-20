@@ -106,6 +106,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Permission Update' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Permission Delete' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Permission Settings' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Permission Import' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Permission Table' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
         Permission::create(['name' => 'Permission Read Name' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);

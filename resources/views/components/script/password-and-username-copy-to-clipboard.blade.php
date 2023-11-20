@@ -3,7 +3,7 @@
 
         var copyPassword = document.getElementById("password").value;
         var copyEmail = document.getElementById("email").value;
-        var copyText = "User Name : " + copyEmail + " , " + "User Password : " + copyPassword
+        var copyText = "User Name : " + copyEmail + " , " + "Password : " + copyPassword
 
         if (copyEmail == "") {
             toastr.error("Please Enter Email");
@@ -15,7 +15,7 @@
 
 
                 navigator.clipboard.writeText(copyText);
-                toastr.success("User Password is Copyied");
+                toastr.success("User Name and Password are Copyied");
             }
         }
 
