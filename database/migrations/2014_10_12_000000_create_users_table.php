@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('gender')->nullable();
+            $table->text('settings');
             $table->string('avatar')->nullable();
 
 

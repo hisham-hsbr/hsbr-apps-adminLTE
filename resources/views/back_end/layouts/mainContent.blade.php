@@ -4,12 +4,12 @@
         <div class="row">
             <div class="col-12">
                 <!-- Default box -->
-                @if ($DefaultLayout->data['card_header'] == 1)
+                @if (Auth::user()->settings['card_header'] == 1)
                     <div class="card card-primary">
                 @endif
 
 
-                @if ($DefaultLayout->data['card_header'] == 1)
+                @if (Auth::user()->settings['card_header'] == 1)
                     <div class="card-header">
                         <h3 class="card-title">@yield('actionTitle')</h3>
 
@@ -31,13 +31,13 @@
                     @show
                 </div>
                 <!-- /.card-body -->
-                @if ($DefaultLayout->data['card_footer'] == 1)
+                @if (Auth::user()->settings['card_footer'] == 1)
                     <div class="card-footer">
                         @yield('actionFooter')
                     </div>
                 @endif
                 <!-- /.card-footer-->
-                @if ($DefaultLayout->data['card_header'] == 1)
+                @if (Auth::user()->settings['card_header'] == 1)
             </div>
             @endif
             <!-- /.card -->

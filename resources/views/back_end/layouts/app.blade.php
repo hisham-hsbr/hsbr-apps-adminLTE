@@ -5,7 +5,17 @@
     @include('back_end.layouts.head')
 </head>
 
-<body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed text-sm layout-footer-fixed">
+<body
+    class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed text-sm layout-footer-fixed
+    @if (Auth::user()->settings['personal_settings'] == 1) {
+        @if (Auth::user()->settings['sidebar_collapse'] == 1) sidebar-collapse @endif
+        @if (Auth::user()->settings['dark_mode'] == 1) dark-mode @endif
+    }
+    @else{
+        @if ($default_layout->data['sidebar_collapse'] == 1) sidebar-collapse @endif
+        @if ($default_layout->data['dark_mode'] == 1) dark-mode @endif}
+    @endif
+    ">
     <div id="loading"></div>
     <!-- Site wrapper -->
     <div class="wrapper">
