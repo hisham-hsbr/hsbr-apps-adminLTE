@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/profile', 'UserController@profileDestroy')->name('profile.destroy');
 
     //activity-logs
-    Route::controller('ActivitylogController')->prefix('/admin/users-management/activity-logs')->name('activityLogs.')->group(function () {
+    Route::controller('ActivityLogController')->prefix('/admin/users-management/activity-logs')->name('activityLogs.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/get', 'activityLogsGet')->name('get');

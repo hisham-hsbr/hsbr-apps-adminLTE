@@ -284,7 +284,7 @@ class UserController extends Controller
             'city' => 'required',
             'gender' => 'required',
 
-            'email' => "required|unique:users,name,$id",
+            'email' => "required|unique:users,email,$id",
 
         ]);
 
@@ -397,7 +397,7 @@ class UserController extends Controller
             'city' => 'required',
             'gender' => 'required',
 
-            'email' => "required|unique:users,name,$id",
+            'email' => "required|unique:users,email,$id",
             // 'password' => 'required|same:password_confirm',
             'roles' => 'required'
         ]);

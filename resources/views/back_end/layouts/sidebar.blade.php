@@ -77,16 +77,8 @@
 
             @endcanany {{-- Masters Menu End --}}
             {{-- @can('Admin Section Menu') --}}
-            @canany([
-                'Admin Settings',
-                'User Settings',
-                'User Read',
-                'Price List Read',
-                'Blood Read',
-                'Permission Read',
-                'Price List
-                Read',
-                ])
+            @canany(['Admin Settings', 'User Settings', 'User Read', 'Price List Read', 'Blood Read', 'Permission Read',
+                'Price List Read', 'Activity Logs Read'])
                 <x-sidebar.sidebar-nav-header head="Admin Section" />
 
 
