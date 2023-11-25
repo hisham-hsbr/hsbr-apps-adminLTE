@@ -20,6 +20,7 @@ class AppSettingsSeeder extends Seeder
                 'card_footer'=>1,
                 'sidebar_collapse'=>null,
                 'dark_mode'=>null,
+                'permission_view'=>"list",
             ],
             'description' => 'app des' ,'parent'=>'layout', 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         AppSettings::create([

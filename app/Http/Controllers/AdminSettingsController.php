@@ -45,6 +45,7 @@ class AdminSettingsController extends Controller
             'card_header'=>$request->card_header,
             'sidebar_collapse'=>$request->sidebar_collapse,
             'dark_mode'=>$request->dark_mode,
+            'permission_view'=>$request->permission_view,
         ];
         $default_layout->updated_by = Auth::user()->id;
         $default_layout->save();

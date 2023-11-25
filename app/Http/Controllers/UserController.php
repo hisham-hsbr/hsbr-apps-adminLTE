@@ -352,6 +352,7 @@ class UserController extends Controller
             'dark_mode'=>$request->dark_mode,
             'default_status'=>$request->default_status,
             'default_time_zone'=>$request->default_time_zone,
+            'permission_view'=>$request->permission_view,
         ];
 
 
@@ -455,6 +456,7 @@ class UserController extends Controller
             'dark_mode'=>$request->dark_mode,
             'default_status'=>$request->default_status,
             'default_time_zone'=>$request->default_time_zone,
+            'permission_view'=>$request->permission_view,
         ];
 
 

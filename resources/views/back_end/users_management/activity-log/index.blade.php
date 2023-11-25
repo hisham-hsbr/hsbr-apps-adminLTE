@@ -23,40 +23,40 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <x-layouts.div-clearfix>
-                                @can('Activity Log Settings')
+                                @can('Activity Logs Settings')
                                     <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-default"
                                         href="" button_icon="fa fa-cog" button_name="Settings" />
-                                @endcan {{-- Activity Log Settings End --}}
-                                @can('Activity Log Table')
+                                @endcan {{-- Activity Logs Settings End --}}
+                                @can('Activity Logs Table')
                                     <x-form.button button_type="" button_oneclick="Refresh()" button_class="btn btn-success"
                                         button_icon="fa fa-refresh" button_name="Refresh" />
-                                @endcan {{-- Activity Log Table --}}
+                                @endcan {{-- Activity Logs Table --}}
                             </x-layouts.div-clearfix>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        @can('Activity Log Table')
+                                        @can('Activity Logs Table')
                                             <th>Sn</th>
                                         @endcan
-                                        @can('Activity Log Read Log Name')
+                                        @can('Activity Logs Read Log Name')
                                             <th>Log Name</th>
                                         @endcan
-                                        @can('Activity Log Read Description')
+                                        @can('Activity Logs Read Description')
                                             <th>Description</th>
                                         @endcan
-                                        @can('Activity Log Read Event')
+                                        @can('Activity Logs Read Event')
                                             <th>Event</th>
                                         @endcan
-                                        @can('Activity Log Read Subject Type')
+                                        @can('Activity Logs Read Subject Type')
                                             <th>Subject Type</th>
                                         @endcan
-                                        @can('Activity Log Read Event User')
+                                        @can('Activity Logs Read Event User')
                                             <th>Event User</th>
                                         @endcan
-                                        @can('Activity Log Created At')
+                                        @can('Activity Logs Created At')
                                             <th>Created At</th>
                                         @endcan
-                                        @can('Activity Log view')
+                                        @can('Activity Logs view')
                                             <th>View</th>
                                         @endcan
                                     </tr>
@@ -66,28 +66,28 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        @can('Activity Log Table')
+                                        @can('Activity Logs Table')
                                             <th>Sn</th>
                                         @endcan
-                                        @can('Activity Log Read Log Name')
+                                        @can('Activity Logs Read Log Name')
                                             <th>Log Name</th>
                                         @endcan
-                                        @can('Activity Log Read Description')
+                                        @can('Activity Logs Read Description')
                                             <th>Description</th>
                                         @endcan
-                                        @can('Activity Log Read Event')
+                                        @can('Activity Logs Read Event')
                                             <th>Event</th>
                                         @endcan
-                                        @can('Activity Log Read Subject Type')
+                                        @can('Activity Logs Read Subject Type')
                                             <th>Subject Type</th>
                                         @endcan
-                                        @can('Activity Log Read Event User')
+                                        @can('Activity Logs Read Event User')
                                             <th>Event User</th>
                                         @endcan
-                                        @can('Activity Log Created At')
+                                        @can('Activity Logs Created At')
                                             <th>Created At</th>
                                         @endcan
-                                        @can('Activity Log view')
+                                        @can('Activity Logs view')
                                             <th>View</th>
                                         @endcan
                                     </tr>
@@ -152,19 +152,19 @@
 
                 // "buttons": ["excel", "pdf", "print", "colvis"],
                 buttons: [
-                    @can('Activity Log Table Export Excel')
+                    @can('Activity Logs Table Export Excel')
                         'excel',
                     @endcan
-                    @can('Activity Log Table Export PDF')
+                    @can('Activity Logs Table Export PDF')
                         'pdf',
                     @endcan
-                    @can('Activity Log Table Print')
+                    @can('Activity Logs Table Print')
                         'print',
                     @endcan
-                    @can('Activity Log Table Copy')
+                    @can('Activity Logs Table Copy')
                         'copy',
                     @endcan
-                    @can('Activity Log Table Column Visible')
+                    @can('Activity Logs Table Column Visible')
                         'colvis',
                     @endcan
                 ],
@@ -182,56 +182,56 @@
                 ajax: '{!! route('activityLogs.get') !!}',
 
                 columns: [
-                    @can('Activity Log Table')
+                    @can('Activity Logs Table')
                         {
                             data: 'id',
                             name: 'id',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log Read Log Name')
+                    @can('Activity Logs Read Log Name')
                         {
                             data: 'log_name',
                             name: 'log_name',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log Read Description')
+                    @can('Activity Logs Read Description')
                         {
                             data: 'description',
                             name: 'description',
                             defaultContent: '',
                         },
                     @endcan
-                    @can('Activity Log Read Event')
+                    @can('Activity Logs Read Event')
                         {
                             data: 'event',
                             name: 'event',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log Read Subject Type')
+                    @can('Activity Logs Read Subject Type')
                         {
                             data: 'subject_type',
                             name: 'subject_type',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log Read Event User')
+                    @can('Activity Logs Read Event User')
                         {
                             data: 'created_user',
                             name: 'created_user',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log Created Ate')
+                    @can('Activity Logs Created At')
                         {
                             data: 'created_at',
                             name: 'created_at',
                             defaultContent: ''
                         },
                     @endcan
-                    @can('Activity Log View')
+                    @can('Activity Logs View')
                         {
                             data: 'viewLink',
                             name: 'editLink',

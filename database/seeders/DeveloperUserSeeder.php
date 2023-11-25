@@ -16,7 +16,12 @@ class DeveloperUserSeeder extends Seeder
     public function run(): void
     {
         $user =User::create([
-        	'name' => 'Developer HSBR',
+        	'name' => 'Developer',
+        	'last_name' => 'HSBR',
+        	'dob' => 1990-10-24,
+        	'phone1' => 4374504387,
+        	'gender' => 'male',
+        	'email_verified_at' => 1990-10-24,
         	'email' => 'hisham@hsbr-apps.co',
         	'password' => bcrypt('hsbr@gmail.com'),
             'created_by' => '1',

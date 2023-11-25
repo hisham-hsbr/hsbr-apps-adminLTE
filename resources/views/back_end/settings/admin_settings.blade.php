@@ -62,6 +62,29 @@
                                     <label class="form-check-label" for="default_time_zone">Default Time Zone
                                         (Current)</label>
                                 </div>
+                                <br>
+                                <br>
+                                <div class="col-sm-8 pl-4 pt-2">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <label for="permission_view" class="required col-form-label ">Permission
+                                                View :</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <select name="permission_view" id="permission_view" class="form-control select2">
+
+                                                <option @if ($default_layout->data['permission_view'] == 'list') { selected } @endif value="list">
+                                                    List
+                                                </option>
+                                                <option @if ($default_layout->data['permission_view'] == 'group') { selected } @endif value="group">
+                                                    Group</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
 
                             </div>
                         </div>

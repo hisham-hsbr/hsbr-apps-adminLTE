@@ -19,7 +19,7 @@
 @section('actionTitle', 'Application Settings')
 @section('mainContent')
     <div class="container-fluid">
-        @can('User Menu')
+        @can('App Settings Read')
             <div class="row">
 
                 <div class="col-md-12">

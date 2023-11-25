@@ -30,7 +30,7 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                @can('Price List Create')
+                @can('Price List Edit')
                     <form role="form" action="{{ route('price-lists.update', $priceList->id) }}" method="post"
                         enctype="multipart/form-data" id="quickForm">
                         {{ csrf_field() }}

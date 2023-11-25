@@ -23,7 +23,7 @@
 @section('actionTitle', 'Activity Log Show')
 @section('mainContent')
     <div class="container-fluid">
-        @can('Activity Log View')
+        @can('Activity Logs View')
             <div class="row">
                 <div class="col-md-1">
 

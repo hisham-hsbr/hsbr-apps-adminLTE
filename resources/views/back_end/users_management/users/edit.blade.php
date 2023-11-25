@@ -23,7 +23,7 @@
 @section('actionTitle', 'User Edit')
 @section('mainContent')
     <div class="container-fluid">
-        @can('User Menu')
+        @can('User Edit')
 
             <div class="row">
 
@@ -334,6 +334,32 @@
                                         <input type="checkbox" class="form-check-input" name="dark_mode" value="1"
                                             id="dark_mode" @if ($user->settings['dark_mode'] == 1) {{ 'checked' }} @endif />
                                         <label class="form-check-label" for="dark_mode">Dark Mode</label>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-8 pl-4 pt-2">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <label for="permission_view" class="required col-form-label ">Permission
+                                                    View :</label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select name="permission_view" id="permission_view"
+                                                    class="form-control select2">
+
+                                                    <option @if ($user->settings['permission_view'] == 'list') { selected } @endif
+                                                        value="list">
+                                                        List
+                                                    </option>
+                                                    <option @if ($user->settings['permission_view'] == 'group') { selected } @endif
+                                                        value="group">
+                                                        Group</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
                                     </div>
 
                                 </div>

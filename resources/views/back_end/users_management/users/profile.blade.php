@@ -18,7 +18,7 @@
 @section('actionTitle', 'Profile')
 @section('mainContent')
     <div class="container-fluid">
-        @can('User Menu')
+        @can('User Profile Edit')
             <div class="row">
                 <div class="col-md-1">
 
@@ -310,6 +310,33 @@
                                                     (Current)</label>
                                             </div>
                                         @endcan
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="col-sm-8 pl-4 pt-2">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <label for="permission_view" class="required col-form-label ">Permission
+                                                        View :</label>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select name="permission_view" id="permission_view"
+                                                        class="form-control select2">
+
+                                                        <option @if (Auth::user()->settings['permission_view'] == 'list') { selected } @endif
+                                                            value="list">
+                                                            List
+                                                        </option>
+                                                        <option @if (Auth::user()->settings['permission_view'] == 'group') { selected } @endif
+                                                            value="group">
+                                                            Group</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
 
                                     </div>
                                     <!-- /.card-body -->
@@ -320,7 +347,7 @@
 
 
                         <div class="">
-                            @can('Profile Update')
+                            @can('User Profile Update')
                                 <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
                             @endcan
                             <a type="button" href="{{ route('back-end.dashboard') }}"

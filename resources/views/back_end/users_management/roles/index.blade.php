@@ -22,7 +22,7 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            @can('User Menu')
+                            @can('Role Read')
                                 <x-layouts.div-clearfix>
                                     <x-form.button-href button_type="" button_oneclick="" button_class="btn btn-primary"
                                         href="{{ route('roles.create') }}" button_icon="fa fa-add" button_name="Add" />
@@ -30,74 +30,140 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Sn</th>
-                                            <th>Name</th>
-                                            <th>Users</th>
-                                            <th>Permissions</th>
-                                            <th>Status</th>
-                                            <th>Created At</th>
-                                            <th>Updated At</th>
-                                            <th>Created By</th>
-                                            <th>Updated By</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+                                            @can('Role Read')
+                                                <th>Sn</th>
+                                            @endcan
+                                            @can('Role Read Name')
+                                                <th>Name</th>
+                                            @endcan
+                                            @can('Role Read Users')
+                                                <th>Users</th>
+                                            @endcan
+                                            @can('Role Read Permissions')
+                                                <th>Permissions</th>
+                                            @endcan
+                                            @can('Role Read Status')
+                                                <th>Status</th>
+                                            @endcan
+                                            @can('Role Read Created At')
+                                                <th>Created At</th>
+                                            @endcan
+                                            @can('Role Read Updated At')
+                                                <th>Updated At</th>
+                                            @endcan
+                                            @can('Role Read Created By')
+                                                <th>Created By</th>
+                                            @endcan
+                                            @can('Role Read Updated By')
+                                                <th>Updated By</th>
+                                            @endcan
+                                            @can('Role Edit')
+                                                <th>Edit</th>
+                                            @endcan
+                                            @can('Role Delete')
+                                                <th>Delete</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($roles as $key => $role)
                                             <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $role->name }}</td>
-                                                <td><span class="badge badge-primary badge-pill">{{ $role->users->count() }}
-                                                        Users</span></td>
-                                                <td> <span
-                                                        class="badge badge-warning badge-pill">{{ $role->permissions->count() }}
-                                                        Permissions</span></td>
-                                                <td>
-                                                    @if ($role->status == '1')
-                                                        <span
-                                                            style="background-color: #04AA6D;color: white;padding: 3px;width:100px;">Active</span>
-                                                    @else
-                                                        <span
-                                                            style="background-color: #ff9800;color: white;padding: 3px;width:100px;">In
-                                                            Active</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{ $role->createdBy->name }}</td>
-                                                <td>{{ $role->updatedBy->name }}</td>
-                                                <td>{{ $role->created_at->format('d-M-Y , h:i:s A') }}</td>
-                                                <td>{{ $role->updated_at->format('d-M-Y , h:i:s A') }}</td>
-                                                <td>
-                                                    <a href="{{ route('roles.edit', $role->id) }}" class="ml-2">
-                                                        <i class="fa-solid fa-edit"></i>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <form method="POST" action="{{ route('roles.destroy', $role->id) }}"
-                                                        onsubmit="return confirm('Are you sure?');">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn" type="submit"><i
-                                                                class="fa-solid fa-trash-can text-danger"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                @can('Role Read')
+                                                    <td>{{ ++$i }}</td>
+                                                @endcan
+                                                @can('Role Read Name')
+                                                    <td>{{ $role->name }}</td>
+                                                @endcan
+                                                @can('Role Read Users')
+                                                    <td><span class="badge badge-primary badge-pill">{{ $role->users->count() }}
+                                                            Users</span></td>
+                                                @endcan
+                                                @can('Role Read Permissions')
+                                                    <td> <span
+                                                            class="badge badge-warning badge-pill">{{ $role->permissions->count() }}
+                                                            Permissions</span></td>
+                                                @endcan
+                                                @can('Role Read Status')
+                                                    <td>
+                                                        @if ($role->status == '1')
+                                                            <span
+                                                                style="background-color: #04AA6D;color: white;padding: 3px;width:100px;">Active</span>
+                                                        @else
+                                                            <span
+                                                                style="background-color: #ff9800;color: white;padding: 3px;width:100px;">In
+                                                                Active</span>
+                                                        @endif
+                                                    </td>
+                                                @endcan
+                                                @can('Role Read Created By')
+                                                    <td>{{ $role->createdBy->name }}</td>
+                                                @endcan
+                                                @can('Role Read Updated By')
+                                                    <td>{{ $role->updatedBy->name }}</td>
+                                                @endcan
+                                                @can('Role Read Created At')
+                                                    <td>{{ $role->created_at->format('d-M-Y , h:i:s A') }}</td>
+                                                @endcan
+                                                @can('Role Read Updated At')
+                                                    <td>{{ $role->updated_at->format('d-M-Y , h:i:s A') }}</td>
+                                                @endcan
+                                                @can('Role Edit')
+                                                    <td>
+                                                        <a href="{{ route('roles.edit', $role->id) }}" class="ml-2">
+                                                            <i class="fa-solid fa-edit"></i>
+                                                        </a>
+                                                    </td>
+                                                @endcan
+                                                @can('Role Delete')
+                                                    <td>
+                                                        <form method="POST" action="{{ route('roles.destroy', $role->id) }}"
+                                                            onsubmit="return confirm('Are you sure?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn" type="submit"><i
+                                                                    class="fa-solid fa-trash-can text-danger"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Sn</th>
-                                            <th>Name</th>
-                                            <th>Users</th>
-                                            <th>Permissions</th>
-                                            <th>Status</th>
-                                            <th>Created At</th>
-                                            <th>Updated At</th>
-                                            <th>Created By</th>
-                                            <th>Updated By</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+                                            @can('Role Read')
+                                                <th>Sn</th>
+                                            @endcan
+                                            @can('Role Read Name')
+                                                <th>Name</th>
+                                            @endcan
+                                            @can('Role Read Users')
+                                                <th>Users</th>
+                                            @endcan
+                                            @can('Role Read Permissions')
+                                                <th>Permissions</th>
+                                            @endcan
+                                            @can('Role Read Status')
+                                                <th>Status</th>
+                                            @endcan
+                                            @can('Role Read Created At')
+                                                <th>Created At</th>
+                                            @endcan
+                                            @can('Role Read Updated At')
+                                                <th>Updated At</th>
+                                            @endcan
+                                            @can('Role Read Created By')
+                                                <th>Created By</th>
+                                            @endcan
+                                            @can('Role Read Updated By')
+                                                <th>Updated By</th>
+                                            @endcan
+                                            @can('Role Edit')
+                                                <th>Edit</th>
+                                            @endcan
+                                            @can('Role Delete')
+                                                <th>Delete</th>
+                                            @endcan
                                         </tr>
                                     </tfoot>
                                 </table>

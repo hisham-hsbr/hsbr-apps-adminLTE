@@ -1,8 +1,8 @@
 @extends('back_end.layouts.app')
 
-@section('PageHead', 'User Create')
+@section('PageHead', 'Permission Create')
 
-@section('PageTitle', 'User Create')
+@section('PageTitle', 'Permission Create')
 @section('pageNavHeader')
     <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
     <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
@@ -20,7 +20,7 @@
         href="{{ asset('back_end_links/adminLinks/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 @endsection
 
-@section('actionTitle', 'User Create')
+@section('actionTitle', 'Permission Create')
 @section('mainContent')
     <div class="container-fluid">
 
@@ -30,7 +30,7 @@
             </div>
             <!-- left column -->
             <div class="col-md-10">
-                @can('User Create')
+                @can('Permission Create')
                     <form role="form" action="{{ route('permissions.store') }}" method="post" enctype="multipart/form-data"
                         id="quickForm">
                         {{ csrf_field() }}
