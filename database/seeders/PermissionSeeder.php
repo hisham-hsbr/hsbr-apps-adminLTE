@@ -14,8 +14,8 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         // => Default
-        // Permission::create(['name' => 'Admin Section Menu' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        // Permission::create(['name' => 'Masters Menu' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Admin Settings Read' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'App Settings Read' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Dashboard Menu' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Sidebar Search Menu' , 'parent' => 'Default' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // <= Default
@@ -28,6 +28,9 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'User Delete' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'User Settings' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'User Table' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'User Profile Read' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'User Profile Edit' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'User Profile Update' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
         Permission::create(['name' => 'User Read First Name' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'User Read Last Name' , 'parent' => 'User' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
@@ -88,6 +91,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Role Settings' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Role Table' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Role Read Name' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Role Read Users' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Role Read Permissions' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Role Read Parent' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Role Read Status' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Role Read Created By' , 'parent' => 'Role' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
@@ -125,59 +130,66 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'Permission Table Column Visible' , 'parent' => 'Permission' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // <= Permission
 
-        // => Activity Log
-        Permission::create(['name' => 'Activity Log Read' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);Permission::create(['name' => 'Activity Log Settings' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Table' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log View' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // => Activity Logs
+        Permission::create(['name' => 'Activity Logs Read' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Settings' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs View' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
-        Permission::create(['name' => 'Activity Log Read Log Name' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Description' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Event' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Event User' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Subject Type' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Read Causer Type' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Log Name' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Description' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Event' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Event User' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Subject Type' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Causer Type' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
-        Permission::create(['name' => 'Activity Log Read Created At' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        // Permission::create(['name' => 'Activity Log Read Created By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        // Permission::create(['name' => 'Activity Log Read Updated By' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        // Permission::create(['name' => 'Activity Log Read Updated At' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Read Created At' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Logs Read Created By' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Logs Read Updated By' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        // Permission::create(['name' => 'Activity Logs Read Updated At' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
-        Permission::create(['name' => 'Activity Log Table Export Excel' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Table Export PDF' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Table Print' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Table Copy' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Log Table Column Visible' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Export Excel' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Export PDF' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Print' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Copy' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Column Visible' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // <= Permission
 
         // Start => Price List
-        Permission::create(['name' => 'Price List Menu' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Create' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Edit' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Update' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Delete' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Settings' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Import' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Table' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
+        Permission::create(['name' => 'Price List Read Code' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read Name' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Local Name' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Group' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Packing' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read UOM' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Packet Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Half Packet Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Wholesale Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Cash Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Credit Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Description' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Read Edit Description' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+
         Permission::create(['name' => 'Price List Read Status' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read Created By' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read Created At' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read Updated By' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         Permission::create(['name' => 'Price List Read Updated At' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Export Excel' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Export PDF' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Print' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Code' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Group' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Packing' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read UOM' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Box Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Half Box Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Wholesale Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Cash Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Credit Price' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Price List Read Description' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
+        Permission::create(['name' => 'Price List Table Export Excel' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Table Export PDF' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Table Print' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Table Copy' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Price List Table Column Visible' , 'parent' => 'Price List' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // End <= Price List
 
     }
