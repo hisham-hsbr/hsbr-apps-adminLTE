@@ -4,10 +4,10 @@ namespace App\Imports;
 
 use App\Models\PriceList;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\withHeadingRow;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Facades\Auth;
 
-class PriceListsImport implements ToModel, withHeadingRow
+class PriceListsImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row

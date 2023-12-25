@@ -148,11 +148,11 @@ class PermissionSeeder extends Seeder
         // Permission::create(['name' => 'Activity Logs Read Updated By' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // Permission::create(['name' => 'Activity Logs Read Updated At' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
 
-        Permission::create(['name' => 'Activity Logs Table Export Excel' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Logs Table Export PDF' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Logs Table Print' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Logs Table Copy' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
-        Permission::create(['name' => 'Activity Logs Table Column Visible' , 'parent' => 'Activity Log' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Export Excel' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Export PDF' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Print' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Copy' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
+        Permission::create(['name' => 'Activity Logs Table Column Visible' , 'parent' => 'Activity Logs' , 'guard_name' => 'web' , 'status' => '1' , 'created_by' => '1' , 'updated_by' => '1']);
         // <= Permission
 
         // Start => Price List
