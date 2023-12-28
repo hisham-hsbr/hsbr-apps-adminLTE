@@ -18,7 +18,7 @@
 @section('actionTitle', 'Role Create')
 @section('mainContent')
     <div class="container-fluid">
-        @can('User Menu')
+        @can('Role Edit')
             <div class="row">
                 <div class="col-md-1">
 
@@ -41,15 +41,109 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label>Assign Permissions</label>
-                                        <select name="permission[]" class="duallistbox" multiple="multiple">
-                                            @foreach ($permissions as $key => $value)
-                                                @foreach ($value as $permission)
-                                                    <option @if (in_array($permission->id, $role->permissions->pluck('id')->toArray())) selected @endif
-                                                        value="{{ $permission->id }}">{{ $permission->name }}</option>
-                                                @endforeach
-                                            @endforeach
-                                        </select>
+                                        @if (Auth::user()->settings['personal_settings'] == 1)
+                                            @if (Auth::user()->settings['permission_view'] == 'list')
+                                                <label>Assign Permissions</label>
+                                                <select name="permission[]" class="duallistbox" multiple="multiple">
+                                                    @foreach ($permissions as $key => $value)
+                                                        @foreach ($value as $permission)
+                                                            <option @if (in_array($permission->id, $role->permissions->pluck('id')->toArray())) selected @endif
+                                                                value="{{ $permission->id }}">{{ $permission->name }}</option>
+                                                        @endforeach
+                                                    @endforeach
+                                                </select>
+                                            @endif
+                                            @if (Auth::user()->settings['permission_view'] == 'group')
+                                                <label for="role" class="pr-4">Assign Permissions</label>
+                                                <label><input class="form-check-input p-5" id="checkall" type="checkbox">
+                                                    Select All
+                                                </label>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        @foreach ($permissions as $key => $value)
+                                                            <div class="col-md-4">
+                                                                <div class="card card-primary">
+                                                                    <div class="card-header">
+                                                                        <h3 class="card-title">{{ $key }}</h3>
+                                                                    </div>
+                                                                    <!-- /.card-header -->
+                                                                    <div class="card-body">
+                                                                        <div class="form-group clearfix">
+                                                                            <div class="icheck-primary d-inline">
+                                                                                @foreach ($value as $permission)
+                                                                                    <input type="checkbox" name="permission[]"
+                                                                                        class="checkitem" id="checkboxPrimary1"
+                                                                                        value="{{ $permission->id }}"
+                                                                                        id="{{ $permission->id }}"
+                                                                                        @if (in_array($permission->id, $role->permissions->pluck('id')->toArray())) checked @endif>
+                                                                                    {{-- <label for="checkboxPrimary3"> --}}
+                                                                                    <label for="{{ $permission->id }}"
+                                                                                        class="form-check-label">{{ $permission->name }}</label>
+                                                                                    <br>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.card-body -->
+                                                                </div>
+                                                                <!-- /.card -->
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @else
+                                            @if ($default_layout->data['permission_view'] == 'list')
+                                                <label>Assign Permissions</label>
+                                                <select name="permission[]" class="duallistbox" multiple="multiple">
+                                                    @foreach ($permissions as $key => $value)
+                                                        @foreach ($value as $permission)
+                                                            <option @if (in_array($permission->id, $role->permissions->pluck('id')->toArray())) selected @endif
+                                                                value="{{ $permission->id }}">{{ $permission->name }}</option>
+                                                        @endforeach
+                                                    @endforeach
+                                                </select>
+                                            @endif
+                                            @if ($default_layout->data['permission_view'] == 'group')
+                                                <label for="role" class="pr-4">Assign Permissions</label>
+                                                <label><input class="form-check-input p-5" id="checkall" type="checkbox">
+                                                    Select All
+                                                </label>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        @foreach ($permissions as $key => $value)
+                                                            <div class="col-md-4">
+                                                                <div class="card card-primary">
+                                                                    <div class="card-header">
+                                                                        <h3 class="card-title">{{ $key }}</h3>
+                                                                    </div>
+                                                                    <!-- /.card-header -->
+                                                                    <div class="card-body">
+                                                                        <div class="form-group clearfix">
+                                                                            <div class="icheck-primary d-inline">
+                                                                                @foreach ($value as $permission)
+                                                                                    <input type="checkbox" name="permission[]"
+                                                                                        class="checkitem" id="checkboxPrimary1"
+                                                                                        value="{{ $permission->id }}"
+                                                                                        id="{{ $permission->id }}"
+                                                                                        @if (in_array($permission->id, $role->permissions->pluck('id')->toArray())) checked @endif>
+                                                                                    {{-- <label for="checkboxPrimary3"> --}}
+                                                                                    <label for="{{ $permission->id }}"
+                                                                                        class="form-check-label">{{ $permission->name }}</label>
+                                                                                    <br>
+                                                                                @endforeach
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.card-body -->
+                                                                </div>
+                                                                <!-- /.card -->
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endif
                                     </div>
                                     <!-- /.form-group -->
                                 </div>
@@ -65,9 +159,9 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="">
-                            {{-- @can('Create User') --}}
-                            <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
-                            {{-- @endcan --}}
+                            @can('Role Update')
+                                <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
+                            @endcan
                             <a type="button" href="{{ route('roles.index') }}"
                                 class="btn btn-warning float-right ml-1">Back</a>
                         </div>
@@ -121,7 +215,7 @@
             }
         })
     </script>
-    <script>
+    {{-- <script>
         var checkid = '{{ $key }}';
         var checkclass = '{{ $key }}';
 
@@ -138,7 +232,7 @@
                 $("#checkall' + checkid").prop("checked", true)
             }
         })
-    </script>
+    </script> --}}
     <!-- Bootstrap4 Duallistbox -->
     <script
         src="{{ asset('back_end_links/adminLinks/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}">

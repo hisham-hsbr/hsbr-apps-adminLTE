@@ -1,8 +1,17 @@
 <!-- Brand Logo -->
 <a href="/" class="brand-link">
-    <x-app.application-logo-mini width="27" />
-    <x-app.application-logo-gray width="102" />
-    <span class="brand-text font-weight-light">{{ $application->data['app_name'] }}</span>
+    {{-- sidebar_mini_logo --}}
+    @if ($logo->data['sidebar_mini_logo'] == 1)
+        <x-app.application-logo-mini width="27" />
+    @endif
+    <div style="padding-left: 20px">
+
+    </div>
+    {{-- sidebar_logo --}}
+    @if ($logo->data['sidebar_logo'] == 1)
+        <x-app.application-logo-white width="112" />
+    @endif
+    {{-- <span class="brand-text font-weight-light"> {{ $application->data['app_name'] }}</span> --}}
 </a>
 <div style="padding:12px">
 

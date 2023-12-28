@@ -9,7 +9,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>HSBR apps</title>
+    <title>{{ $application->data['app_name'] }}</title>
 
     <!-- ===============================================-->
     <!--    Favicons-->
@@ -76,21 +76,37 @@
                         class="d-flex flex-center text-decoration-none mb-4"
                         href="{{ asset('front_end_links/phoenix/public/index.html') }}">
                         <div class="d-flex align-items-center fw-bolder fs-5 d-inline-block">
-                            <x-app.application-logo-mini width="150" />
+                            {{-- sign_mini_logo --}}
+                            @if ($logo->data['sign_mini_logo'] == 1)
+                                <x-app.application-logo-mini width="150" />
+                            @endif
+                            {{-- sign_logo --}}
+                            @if ($logo->data['sign_logo'] == 1)
+                                <x-app.application-logo-black width="265" />
+                            @endif
                         </div>
                     </a>
                     <div class="text-center mb-7">
                         <h3 class="text-1000">Sign In</h3>
                         <p class="text-700">Get access to your account</p>
                     </div>
-                    <button class="btn btn-phoenix-secondary w-100 mb-3"><span
-                            class="fab fa-google text-danger me-2 fs--1"></span>Sign in with google</button>
-                    <button class="btn btn-phoenix-secondary w-100"><span
-                            class="fab fa-facebook text-primary me-2 fs--1"></span>Sign in with facebook</button>
-                    <div class="position-relative">
-                        <hr class="bg-200 mt-5 mb-4" />
-                        <div class="divider-content-center">or use email</div>
-                    </div>
+                    {{-- sign_with_google --}}
+                    @if ($logo->data['sign_with_google'] == 1)
+                        <button class="btn btn-phoenix-secondary w-100 mb-3"><span
+                                class="fab fa-google text-danger me-2 fs--1"></span>Sign in with google</button>
+                    @endif
+                    {{-- sign_with_facebook --}}
+                    @if ($logo->data['sign_with_facebook'] == 1)
+                        <button class="btn btn-phoenix-secondary w-100"><span
+                                class="fab fa-facebook text-primary me-2 fs--1"></span>Sign in with facebook</button>
+                    @endif
+
+                    @if ($logo->data['sign_with_google'] == 1 || $logo->data['sign_with_facebook'] == 1)
+                        <div class="position-relative">
+                            <hr class="bg-200 mt-5 mb-4" />
+                            <div class="divider-content-center">or use email</div>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="mb-3 text-start">
@@ -123,8 +139,9 @@
                                     Password?</a></div>
                         </div>
                         <button class="btn btn-primary w-100 mb-3">Sign In</button>
-                        <div class="text-center"><a class="fs--1 fw-bold" href="/register">Create
-                                an account</a></div>
+                        <div class="text-center"><a class="fs--1 fw-bold" href="/register">Create an account</a>
+                        </div>
+                        <div class="text-center"><a class="fs--1 fw-bold" href="/">Back</a></div>
                     </form>
                 </div>
             </div>

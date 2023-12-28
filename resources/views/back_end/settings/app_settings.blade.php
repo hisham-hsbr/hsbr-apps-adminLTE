@@ -28,34 +28,9 @@
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <div class="card-body">
-                            {{-- App settings --}}
-                            <div class="row">
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="app_name" lable_class="required"
-                                    label_name="Application Name" input_type="text" input_name="app_name" input_id="app_name"
-                                    input_style="" input_class="" input_value="{{ $application->data['app_name'] }}"
-                                    input_placeholder="Enter Application Name" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="app_version"
-                                    lable_class="required" label_name="Application Version" input_type="text"
-                                    input_name="app_version" input_id="app_version" input_style="" input_class=""
-                                    input_value="{{ $application->data['app_version'] }}"
-                                    input_placeholder="Enter Application Version" />
-                            </div>
-                            {{-- page settings --}}
-                            <div class="row">
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_prefix"
-                                    lable_class="required" label_name="Page Title Prefix" input_type="text"
-                                    input_name="page_title_prefix" input_id="page_title_prefix" input_style="" input_class=""
-                                    input_value="{{ $page->data['page_title_prefix'] }}"
-                                    input_placeholder="Page Title Prefix" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_suffix"
-                                    lable_class="required" label_name="Page Title Suffix" input_type="text"
-                                    input_name="page_title_suffix" input_id="page_title_suffix" input_style="" input_class=""
-                                    input_value="{{ $page->data['page_title_suffix'] }}"
-                                    input_placeholder="Page Title Suffix" />
-
-                            </div>
                             {{-- Developer settings --}}
                             <div class="row">
+                                <x-form.form-heading name="Developer settings" />
                                 <x-form.form-group-label-input div_class="col-sm-3" label_for="name" lable_class="required"
                                     label_name="Name" input_type="text" input_name="name" input_id="name" input_style=""
                                     input_class="" input_value="{{ $developer->data['name'] }}"
@@ -70,13 +45,98 @@
                                 <x-form.form-group-label-input div_class="col-sm-3" label_for="starting_year"
                                     lable_class="required" label_name="Starting Year" input_type="number"
                                     input_name="starting_year" input_id="starting_year" input_style="" input_class=""
-                                    input_value="{{ $developer->data['starting_year'] }}"
-                                    input_placeholder="starting_year" />
+                                    input_value="{{ $developer->data['starting_year'] }}" input_placeholder="starting_year" />
                                 <x-form.form-group-label-input div_class="col-sm-3" label_for="ending_year"
-                                    lable_class="required" label_name="Ending Year" input_type="number"
-                                    input_name="ending_year" input_id="ending_year" input_style="" input_class=""
+                                    lable_class="required" label_name="Ending Year" input_type="number" input_name="ending_year"
+                                    input_id="ending_year" input_style="" input_class=""
                                     input_value="{{ $developer->data['ending_year'] }}" input_placeholder="ending_year" />
+                            </div>
+                            {{-- App settings --}}
+                            <div class="row">
+                                <x-form.form-heading name="Application settings" />
+                                <x-form.form-group-label-input div_class="col-sm-3" label_for="app_name" lable_class="required"
+                                    label_name="Application Name" input_type="text" input_name="app_name" input_id="app_name"
+                                    input_style="" input_class="" input_value="{{ $application->data['app_name'] }}"
+                                    input_placeholder="Enter Application Name" />
+                                <x-form.form-group-label-input div_class="col-sm-3" label_for="app_version"
+                                    lable_class="required" label_name="Application Version" input_type="text"
+                                    input_name="app_version" input_id="app_version" input_style="" input_class=""
+                                    input_value="{{ $application->data['app_version'] }}"
+                                    input_placeholder="Enter Application Version" />
+                            </div>
+                            {{-- page settings --}}
+                            <div class="row">
+                                <x-form.form-heading name="Page settings" />
+                                <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_prefix"
+                                    lable_class="required" label_name="Page Title Prefix" input_type="text"
+                                    input_name="page_title_prefix" input_id="page_title_prefix" input_style=""
+                                    input_class="" input_value="{{ $page->data['page_title_prefix'] }}"
+                                    input_placeholder="Page Title Prefix" />
+                                <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_suffix"
+                                    lable_class="required" label_name="Page Title Suffix" input_type="text"
+                                    input_name="page_title_suffix" input_id="page_title_suffix" input_style=""
+                                    input_class="" input_value="{{ $page->data['page_title_suffix'] }}"
+                                    input_placeholder="Page Title Suffix" />
 
+                            </div>
+                            <div class="row">
+                                <x-form.form-heading name="Sidebar logo settings" />
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sidebar_logo"
+                                    lable_class="required" label_name="Sidebar logo" select_class=""
+                                    select_name="sidebar_logo" select_id="">
+                                    <option @if ($logo->data['sidebar_logo'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sidebar_logo'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
+
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sidebar_mini_logo"
+                                    lable_class="required" label_name="Sidebar Mini logo" select_class=""
+                                    select_name="sidebar_mini_logo" select_id="">
+                                    <option @if ($logo->data['sidebar_mini_logo'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sidebar_mini_logo'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
+                            </div>
+                            <div class="row">
+                                <x-form.form-heading name="Sign in & up settings" />
+
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sign_logo"
+                                    lable_class="required" label_name="Sign in & up logo" select_class=""
+                                    select_name="sign_logo" select_id="">
+                                    <option @if ($logo->data['sign_logo'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sign_logo'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
+
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sign_mini_logo"
+                                    lable_class="required" label_name="Sign in & up mini logo" select_class=""
+                                    select_name="sign_mini_logo" select_id="">
+                                    <option @if ($logo->data['sign_mini_logo'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sign_mini_logo'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
+
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sign_with_google"
+                                    lable_class="required" label_name="Sign in & up with Google" select_class=""
+                                    select_name="sign_with_google" select_id="">
+                                    <option @if ($logo->data['sign_with_google'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sign_with_google'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
+
+                                <x-form.form-group-label-select div_class="col-sm-3" label_for="sign_with_facebook"
+                                    lable_class="required" label_name="Sign in & up with Facebook" select_class=""
+                                    select_name="sign_with_facebook" select_id="">
+                                    <option @if ($logo->data['sign_with_facebook'] == '1') { selected } @endif value="1">Enable
+                                    </option>
+                                    <option @if ($logo->data['sign_with_facebook'] == '0') { selected } @endif value="0">Disable
+                                    </option>
+                                </x-form.form-group-label-select>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -92,6 +152,7 @@
 
                 </div>
                 <!--/.col (left) -->
+
 
             </div>
         @endcan

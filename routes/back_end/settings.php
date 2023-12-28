@@ -9,9 +9,12 @@ Route::middleware('auth')->group(function () {
     Route::controller('DeveloperSettingsController')->prefix('/developer/settings/developer-settings')->name('developer-settings.')->group(function () {
         Route::get('/', 'developerIndex')->name('index');
         Route::patch('/update', 'developerUpdate')->name('update');
+        Route::patch('/favicon-update', 'faviconUpdate')->name('favicon-update');
+        Route::patch('/logo-black-update', 'logoBlackUpdate')->name('logo-black-update');
+        Route::patch('/logo-white-update', 'logoWhiteUpdate')->name('logo-white-update');
     });
     //App Settings
-    Route::controller('DeveloperSettingsController')->prefix('/developer/settings/app-settings')->name('app-settings.')->group(function () {
+    Route::controller('AppSettingsController')->prefix('/developer/settings/app-settings')->name('app-settings.')->group(function () {
         Route::get('/', 'appIndex')->name('index');
         Route::patch('/update', 'appUpdate')->name('update');
     });

@@ -284,7 +284,7 @@ class UserController extends Controller
             'city' => 'required',
             'gender' => 'required',
 
-            'email' => "required|unique:users,name,$id",
+            'email' => "required|unique:users,email,$id",
 
         ]);
 
@@ -352,6 +352,7 @@ class UserController extends Controller
             'dark_mode'=>$request->dark_mode,
             'default_status'=>$request->default_status,
             'default_time_zone'=>$request->default_time_zone,
+            'permission_view'=>$request->permission_view,
         ];
 
 
@@ -397,7 +398,7 @@ class UserController extends Controller
             'city' => 'required',
             'gender' => 'required',
 
-            'email' => "required|unique:users,name,$id",
+            'email' => "required|unique:users,email,$id",
             // 'password' => 'required|same:password_confirm',
             'roles' => 'required'
         ]);
@@ -455,6 +456,7 @@ class UserController extends Controller
             'dark_mode'=>$request->dark_mode,
             'default_status'=>$request->default_status,
             'default_time_zone'=>$request->default_time_zone,
+            'permission_view'=>$request->permission_view,
         ];
 
 

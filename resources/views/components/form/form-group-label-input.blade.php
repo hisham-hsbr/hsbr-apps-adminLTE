@@ -42,6 +42,7 @@
         class="form-control{{ $input_class }}" value="{{ $input_value }}" placeholder="{{ $input_placeholder }}">
 </div>
 
+
 {{--
 <x-form.form-group-label-input div_class="" label_for="" lable_class="" label_name="" input_type="" input_name=""
     input_id="" input_style="" input_class="" input_value="" input_placeholder="" />

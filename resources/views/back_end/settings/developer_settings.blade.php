@@ -40,46 +40,10 @@
                                     input_value="{{ $application->data['app_version'] }}"
                                     input_placeholder="Enter Application Version" /> --}}
                             </div>
-                            {{-- page settings --}}
-                            <div class="row">
-                                {{-- <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_prefix"
-                                    lable_class="required" label_name="Page Title Prefix" input_type="text"
-                                    input_name="page_title_prefix" input_id="page_title_prefix" input_style="" input_class=""
-                                    input_value="{{ $page->data['page_title_prefix'] }}"
-                                    input_placeholder="Page Title Prefix" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="page_title_suffix"
-                                    lable_class="required" label_name="Page Title Suffix" input_type="text"
-                                    input_name="page_title_suffix" input_id="page_title_suffix" input_style="" input_class=""
-                                    input_value="{{ $page->data['page_title_suffix'] }}"
-                                    input_placeholder="Page Title Suffix" /> --}}
 
-                            </div>
-                            {{-- Developer settings --}}
-                            <div class="row">
-                                {{-- <x-form.form-group-label-input div_class="col-sm-3" label_for="name" lable_class="required"
-                                    label_name="Name" input_type="text" input_name="name" input_id="name" input_style=""
-                                    input_class="" input_value="{{ $developer->data['name'] }}"
-                                    input_placeholder="Page Title Prefix" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="website" lable_class="required"
-                                    label_name="Website" input_type="url" input_name="website" input_id="website" input_style=""
-                                    input_class="" input_value="{{ $developer->data['website'] }}"
-                                    input_placeholder="website" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="mail" lable_class="required"
-                                    label_name="Mail" input_type="email" input_name="mail" input_id="mail" input_style=""
-                                    input_class="" input_value="{{ $developer->data['mail'] }}" input_placeholder="mail" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="starting_year"
-                                    lable_class="required" label_name="Starting Year" input_type="number"
-                                    input_name="starting_year" input_id="starting_year" input_style="" input_class=""
-                                    input_value="{{ $developer->data['starting_year'] }}"
-                                    input_placeholder="starting_year" />
-                                <x-form.form-group-label-input div_class="col-sm-3" label_for="ending_year"
-                                    lable_class="required" label_name="Ending Year" input_type="number"
-                                    input_name="ending_year" input_id="ending_year" input_style="" input_class=""
-                                    input_value="{{ $developer->data['ending_year'] }}" input_placeholder="ending_year" /> --}}
-
-                            </div>
                         </div>
                         <!-- /.card-body -->
+
                         <div class="">
                             {{-- @can('Create User') --}}
                             <button type="submit" class="btn btn-primary float-right ml-1">Update</button>
@@ -92,7 +56,96 @@
 
                 </div>
                 <!--/.col (left) -->
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Favicon</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <img width="135" height="" class="img-circle elevation-2" style="font-size: 6px"
+                                src="{{ asset('/storage/images/app/favicon.png') }}" alt="user avatar">
+                            <form method="post" action="{{ route('developer-settings.favicon-update') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="col-12 mb-3">
 
+                                    <label class="form-label" for="customFile">Select your favicon</label>
+
+                                    <input class="form-control" id="favicon" name="favicon" type="file" required autofocus
+                                        autocomplete="favicon" />
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Application logo Black</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <img width="455" height="150" src="{{ asset('/storage/images/app/logo_black.png') }}"
+                                alt="logo_black">
+                            <form method="post" action="{{ route('developer-settings.logo-black-update') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="col-12 mb-3">
+
+                                    <label class="form-label" for="customFile">Select your Application logo black</label>
+
+                                    <input class="form-control" id="logo_black" name="logo_black" type="file" required
+                                        autofocus autocomplete="logo_black" />
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Application logo white</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <img width="455" height="150" src="{{ asset('/storage/images/app/logo_white.png') }}"
+                                alt="logo_white">
+                            <form method="post" action="{{ route('developer-settings.logo-white-update') }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('patch')
+                                <div class="col-12 mb-3">
+
+                                    <label class="form-label" for="customFile">Select your Application logo white</label>
+
+                                    <input class="form-control" id="logo_white" name="logo_white" type="file" required
+                                        autofocus autocomplete="logo_white" />
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
             </div>
         @endcan
         <!-- /.row -->

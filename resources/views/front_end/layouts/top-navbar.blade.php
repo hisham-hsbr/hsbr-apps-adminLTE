@@ -2,9 +2,9 @@
     <nav class="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3"><a
             class="navbar-brand flex-1 flex-lg-grow-0" href="/">
             <div class="d-flex align-items-center">
-                <x-app.application-logo-mini width="27" />
+                {{-- <x-app.application-logo-mini width="27" /> --}}
 
-                <x-app.application-logo-blue width="127" />
+                <x-app.application-logo-black width="265" />
 
             </div>
         </a>

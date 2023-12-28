@@ -9,6 +9,7 @@ use App\Models\DeveloperSettings;
 view()->share('application', DeveloperSettings::firstWhere('name', 'application'));
 view()->share('page', DeveloperSettings::firstWhere('name', 'page'));
 view()->share('developer', DeveloperSettings::firstWhere('name', 'developer'));
+view()->share('logo', DeveloperSettings::firstWhere('name', 'logo'));
 
 
 // App Settings view
